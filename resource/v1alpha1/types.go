@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 )
@@ -41,12 +41,12 @@ type ResourceClaim struct {
 	// Spec describes the desired attributes of a resource that then needs
 	// to be allocated. It can only be set once when creating the
 	// ResourceClaim.
-	Spec ResourceClaimSpec `json:"spec" protobuf:"bytes,2,name=spec"`
+	Spec *ResourceClaimSpec `json:"spec" protobuf:"bytes,2,name=spec"`
 
 	// Status describes whether the resource is available and with which
 	// attributes.
 	// +optional
-	Status ResourceClaimStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *ResourceClaimStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // ResourceClaimSpec defines how a resource is to be allocated.
@@ -54,7 +54,7 @@ type ResourceClaimSpec struct {
 	// ResourceClassName references the driver and additional parameters
 	// via the name of a ResourceClass that was created as part of the
 	// driver deployment.
-	ResourceClassName string `json:"resourceClassName" protobuf:"bytes,1,name=resourceClassName"`
+	ResourceClassName *string `json:"resourceClassName" protobuf:"bytes,1,name=resourceClassName"`
 
 	// ParametersRef references a separate object with arbitrary parameters
 	// that will be used by the driver when allocating a resource for the
@@ -67,7 +67,7 @@ type ResourceClaimSpec struct {
 	// Allocation can start immediately or when a Pod wants to use the
 	// resource. "WaitForFirstConsumer" is the default.
 	// +optional
-	AllocationMode AllocationMode `json:"allocationMode,omitempty" protobuf:"bytes,3,opt,name=allocationMode"`
+	AllocationMode *AllocationMode `json:"allocationMode,omitempty" protobuf:"bytes,3,opt,name=allocationMode"`
 }
 
 // AllocationMode describes whether a ResourceClaim gets allocated immediately
@@ -97,7 +97,7 @@ type ResourceClaimStatus struct {
 	// DriverName is a copy of the driver name from the ResourceClass at
 	// the time when allocation started.
 	// +optional
-	DriverName string `json:"driverName,omitempty" protobuf:"bytes,1,opt,name=driverName"`
+	DriverName *string `json:"driverName,omitempty" protobuf:"bytes,1,opt,name=driverName"`
 
 	// Allocation is set by the resource driver once a resource has been
 	// allocated successfully. If this is not specified, the resource is
@@ -126,7 +126,7 @@ type ResourceClaimStatus struct {
 	// While DeallocationRequested is set, no new consumers may be added to
 	// ReservedFor.
 	// +optional
-	DeallocationRequested bool `json:"deallocationRequested,omitempty" protobuf:"varint,4,opt,name=deallocationRequested"`
+	DeallocationRequested *bool `json:"deallocationRequested,omitempty" protobuf:"varint,4,opt,name=deallocationRequested"`
 }
 
 // ReservedForMaxSize is the maximum number of entries in
@@ -143,7 +143,7 @@ type AllocationResult struct {
 	// The maximum size of this field is 16KiB. This may get
 	// increased in the future, but not reduced.
 	// +optional
-	ResourceHandle string `json:"resourceHandle,omitempty" protobuf:"bytes,1,opt,name=resourceHandle"`
+	ResourceHandle *string `json:"resourceHandle,omitempty" protobuf:"bytes,1,opt,name=resourceHandle"`
 
 	// This field will get set by the resource driver after it has
 	// allocated the resource driver to inform the scheduler where it can
@@ -157,7 +157,7 @@ type AllocationResult struct {
 	// Shareable determines whether the resource supports more
 	// than one consumer at a time.
 	// +optional
-	Shareable bool `json:"shareable,omitempty" protobuf:"varint,3,opt,name=shareable"`
+	Shareable *bool `json:"shareable,omitempty" protobuf:"varint,3,opt,name=shareable"`
 }
 
 // ResourceHandleMaxSize is the maximum size of allocation.resourceHandle.
@@ -194,11 +194,11 @@ type PodScheduling struct {
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// Spec describes where resources for the Pod are needed.
-	Spec PodSchedulingSpec `json:"spec" protobuf:"bytes,2,name=spec"`
+	Spec *PodSchedulingSpec `json:"spec" protobuf:"bytes,2,name=spec"`
 
 	// Status describes where resources for the Pod can be allocated.
 	// +optional
-	Status PodSchedulingStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *PodSchedulingStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // PodSchedulingSpec describes where resources for the Pod are needed.
@@ -207,7 +207,7 @@ type PodSchedulingSpec struct {
 	// are referenced by the Pod and that use "WaitForFirstConsumer"
 	// allocation is to be attempted.
 	// +optional
-	SelectedNode string `json:"selectedNode,omitempty" protobuf:"bytes,1,opt,name=selectedNode"`
+	SelectedNode *string `json:"selectedNode,omitempty" protobuf:"bytes,1,opt,name=selectedNode"`
 
 	// PotentialNodes lists nodes where the Pod might be able to run.
 	//
@@ -242,7 +242,7 @@ type PodSchedulingStatus struct {
 type ResourceClaimSchedulingStatus struct {
 	// Name matches the pod.spec.resourceClaims[*].Name field.
 	// +optional
-	Name string `json:"name,omitempty" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name,omitempty" protobuf:"bytes,1,opt,name=name"`
 
 	// UnsuitableNodes lists nodes that the ResourceClaim cannot be
 	// allocated for.
@@ -296,7 +296,7 @@ type ResourceClass struct {
 	//
 	// Resource drivers have a unique name in forward domain order
 	// (acme.example.com).
-	DriverName string `json:"driverName" protobuf:"bytes,2,name=driverName"`
+	DriverName *string `json:"driverName" protobuf:"bytes,2,name=driverName"`
 
 	// ParametersRef references an arbitrary separate object that may hold
 	// parameters that will be used by the driver when allocating a
@@ -336,17 +336,17 @@ type ResourceClassParametersReference struct {
 	// empty for the core API. This matches the group in the APIVersion
 	// that is used when creating the resources.
 	// +optional
-	APIGroup string `json:"apiGroup,omitempty" protobuf:"bytes,1,opt,name=apiGroup"`
+	APIGroup *string `json:"apiGroup,omitempty" protobuf:"bytes,1,opt,name=apiGroup"`
 	// Kind is the type of resource being referenced. This is the same
 	// value as in the parameter object's metadata.
-	Kind string `json:"kind" protobuf:"bytes,2,name=kind"`
+	Kind *string `json:"kind" protobuf:"bytes,2,name=kind"`
 	// Name is the name of resource being referenced.
-	Name string `json:"name" protobuf:"bytes,3,name=name"`
+	Name *string `json:"name" protobuf:"bytes,3,name=name"`
 	// Namespace that contains the referenced resource. Must be empty
 	// for cluster-scoped resources and non-empty for namespaced
 	// resources.
 	// +optional
-	Namespace string `json:"namespace,omitempty" protobuf:"bytes,4,opt,name=namespace"`
+	Namespace *string `json:"namespace,omitempty" protobuf:"bytes,4,opt,name=namespace"`
 }
 
 // ResourceClaimParametersReference contains enough information to let you
@@ -357,12 +357,12 @@ type ResourceClaimParametersReference struct {
 	// empty for the core API. This matches the group in the APIVersion
 	// that is used when creating the resources.
 	// +optional
-	APIGroup string `json:"apiGroup,omitempty" protobuf:"bytes,1,opt,name=apiGroup"`
+	APIGroup *string `json:"apiGroup,omitempty" protobuf:"bytes,1,opt,name=apiGroup"`
 	// Kind is the type of resource being referenced. This is the same
 	// value as in the parameter object's metadata, for example "ConfigMap".
-	Kind string `json:"kind" protobuf:"bytes,2,name=kind"`
+	Kind *string `json:"kind" protobuf:"bytes,2,name=kind"`
 	// Name is the name of resource being referenced.
-	Name string `json:"name" protobuf:"bytes,3,name=name"`
+	Name *string `json:"name" protobuf:"bytes,3,name=name"`
 }
 
 // ResourceClaimConsumerReference contains enough information to let you
@@ -373,11 +373,11 @@ type ResourceClaimConsumerReference struct {
 	// empty for the core API. This matches the group in the APIVersion
 	// that is used when creating the resources.
 	// +optional
-	APIGroup string `json:"apiGroup,omitempty" protobuf:"bytes,1,opt,name=apiGroup"`
+	APIGroup *string `json:"apiGroup,omitempty" protobuf:"bytes,1,opt,name=apiGroup"`
 	// Resource is the type of resource being referenced, for example "pods".
-	Resource string `json:"resource" protobuf:"bytes,3,name=resource"`
+	Resource *string `json:"resource" protobuf:"bytes,3,name=resource"`
 	// Name is the name of resource being referenced.
-	Name string `json:"name" protobuf:"bytes,4,name=name"`
+	Name *string `json:"name" protobuf:"bytes,4,name=name"`
 	// UID identifies exactly one incarnation of the resource.
 	UID types.UID `json:"uid" protobuf:"bytes,5,name=uid"`
 }
@@ -398,7 +398,7 @@ type ResourceClaimTemplate struct {
 	// This field is immutable. A ResourceClaim will get created by the
 	// control plane for a Pod when needed and then not get updated
 	// anymore.
-	Spec ResourceClaimTemplateSpec `json:"spec" protobuf:"bytes,2,name=spec"`
+	Spec *ResourceClaimTemplateSpec `json:"spec" protobuf:"bytes,2,name=spec"`
 }
 
 // ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.
@@ -412,7 +412,7 @@ type ResourceClaimTemplateSpec struct {
 	// Spec for the ResourceClaim. The entire content is copied unchanged
 	// into the ResourceClaim that gets created from this template. The
 	// same fields as in a ResourceClaim are also valid here.
-	Spec ResourceClaimSpec `json:"spec" protobuf:"bytes,2,name=spec"`
+	Spec *ResourceClaimSpec `json:"spec" protobuf:"bytes,2,name=spec"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

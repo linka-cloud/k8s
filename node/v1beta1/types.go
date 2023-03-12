@@ -17,7 +17,7 @@ limitations under the License.
 package v1beta1
 
 import (
-	corev1 "k8s.io/api/core/v1"
+	corev1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -50,7 +50,7 @@ type RuntimeClass struct {
 	// in a pod.
 	// The Handler must be lowercase, conform to the DNS Label (RFC 1123) requirements,
 	// and is immutable.
-	Handler string `json:"handler" protobuf:"bytes,2,opt,name=handler"`
+	Handler *string `json:"handler" protobuf:"bytes,2,opt,name=handler"`
 
 	// Overhead represents the resource overhead associated with running a pod for a
 	// given RuntimeClass. For more details, see

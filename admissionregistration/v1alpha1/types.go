@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/admissionregistration/v1"
+	v1 "go.linka.cloud/k8s/admissionregistration/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -73,7 +73,7 @@ type ValidatingAdmissionPolicy struct {
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 	// Specification of the desired behavior of the ValidatingAdmissionPolicy.
-	Spec ValidatingAdmissionPolicySpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ValidatingAdmissionPolicySpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -127,11 +127,11 @@ type ParamKind struct {
 	// APIVersion is the API group version the resources belong to.
 	// In format of "group/version".
 	// Required.
-	APIVersion string `json:"apiVersion,omitempty" protobuf:"bytes,1,rep,name=apiVersion"`
+	APIVersion *string `json:"apiVersion,omitempty" protobuf:"bytes,1,rep,name=apiVersion"`
 
 	// Kind is the API kind the resources belong to.
 	// Required.
-	Kind string `json:"kind,omitempty" protobuf:"bytes,2,rep,name=kind"`
+	Kind *string `json:"kind,omitempty" protobuf:"bytes,2,rep,name=kind"`
 }
 
 // Validation specifies the CEL expression which is used to apply the validation.
@@ -170,7 +170,7 @@ type Validation struct {
 	//     are overwritten by values in `Y` when the key sets of `X` and `Y` intersect. Elements in `Y` with
 	//     non-intersecting keys are appended, retaining their partial order.
 	// Required.
-	Expression string `json:"expression" protobuf:"bytes,1,opt,name=Expression"`
+	Expression *string `json:"expression" protobuf:"bytes,1,opt,name=Expression"`
 	// Message represents the message displayed when validation fails. The message is required if the Expression contains
 	// line breaks. The message must not contain line breaks.
 	// If unset, the message is "failed rule: {Rule}".
@@ -179,7 +179,7 @@ type Validation struct {
 	// The message must not contain line breaks.
 	// If unset, the message is "failed Expression: {Expression}".
 	// +optional
-	Message string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
 	// Reason represents a machine-readable description of why this validation failed.
 	// If this is the first validation in the list to fail, this reason, as well as the
 	// corresponding HTTP response code, are used in the
@@ -203,7 +203,7 @@ type ValidatingAdmissionPolicyBinding struct {
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 	// Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.
-	Spec ValidatingAdmissionPolicyBindingSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ValidatingAdmissionPolicyBindingSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -225,7 +225,7 @@ type ValidatingAdmissionPolicyBindingSpec struct {
 	// PolicyName references a ValidatingAdmissionPolicy name which the ValidatingAdmissionPolicyBinding binds to.
 	// If the referenced resource does not exist, this binding is considered invalid and will be ignored
 	// Required.
-	PolicyName string `json:"policyName,omitempty" protobuf:"bytes,1,rep,name=policyName"`
+	PolicyName *string `json:"policyName,omitempty" protobuf:"bytes,1,rep,name=policyName"`
 
 	// ParamRef specifies the parameter resource used to configure the admission control policy.
 	// It should point to a resource of the type specified in ParamKind of the bound ValidatingAdmissionPolicy.
@@ -246,11 +246,11 @@ type ValidatingAdmissionPolicyBindingSpec struct {
 // +structType=atomic
 type ParamRef struct {
 	// Name of the resource being referenced.
-	Name string `json:"name,omitempty" protobuf:"bytes,1,rep,name=name"`
+	Name *string `json:"name,omitempty" protobuf:"bytes,1,rep,name=name"`
 	// Namespace of the referenced resource.
 	// Should be empty for the cluster-scoped resources
 	// +optional
-	Namespace string `json:"namespace,omitempty" protobuf:"bytes,2,rep,name=namespace"`
+	Namespace *string `json:"namespace,omitempty" protobuf:"bytes,2,rep,name=namespace"`
 }
 
 // MatchResources decides whether to run the admission control policy on an object based

@@ -21,4 +21,4 @@ limitations under the License.
 // +groupName=resource.k8s.io
 
 // Package v1alpha1 is the v1alpha1 version of the resource API.
-package v1alpha1 // import "k8s.io/api/resource/v1alpha1"
+package v1alpha1 // import "go.linka.cloud/k8s/resource/v1alpha1"

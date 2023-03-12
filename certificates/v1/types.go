@@ -19,7 +19,7 @@ package v1
 import (
 	"fmt"
 
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -46,12 +46,12 @@ type CertificateSigningRequest struct {
 	// spec contains the certificate request, and is immutable after creation.
 	// Only the request, signerName, expirationSeconds, and usages fields can be set on creation.
 	// Other fields are derived by Kubernetes and cannot be modified by users.
-	Spec CertificateSigningRequestSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *CertificateSigningRequestSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 
 	// status contains information about whether the request is approved or denied,
 	// and the certificate issued by the signer, or the failure condition indicating signer failure.
 	// +optional
-	Status CertificateSigningRequestStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *CertificateSigningRequestStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // CertificateSigningRequestSpec contains the certificate request.
@@ -82,7 +82,7 @@ type CertificateSigningRequestSpec struct {
 	//  4. Required, permitted, or forbidden key usages / extended key usages.
 	//  5. Expiration/certificate lifetime: whether it is fixed by the signer, configurable by the admin.
 	//  6. Whether or not requests for CA certificates are allowed.
-	SignerName string `json:"signerName" protobuf:"bytes,7,opt,name=signerName"`
+	SignerName *string `json:"signerName" protobuf:"bytes,7,opt,name=signerName"`
 
 	// expirationSeconds is the requested duration of validity of the issued
 	// certificate. The certificate signer may issue a certificate with a different
@@ -126,11 +126,11 @@ type CertificateSigningRequestSpec struct {
 	// username contains the name of the user that created the CertificateSigningRequest.
 	// Populated by the API server on creation and immutable.
 	// +optional
-	Username string `json:"username,omitempty" protobuf:"bytes,2,opt,name=username"`
+	Username *string `json:"username,omitempty" protobuf:"bytes,2,opt,name=username"`
 	// uid contains the uid of the user that created the CertificateSigningRequest.
 	// Populated by the API server on creation and immutable.
 	// +optional
-	UID string `json:"uid,omitempty" protobuf:"bytes,3,opt,name=uid"`
+	UID *string `json:"uid,omitempty" protobuf:"bytes,3,opt,name=uid"`
 	// groups contains group membership of the user that created the CertificateSigningRequest.
 	// Populated by the API server on creation and immutable.
 	// +listType=atomic
@@ -241,16 +241,16 @@ type CertificateSigningRequestCondition struct {
 	// Approved, Denied, and Failed conditions cannot be removed once added.
 	//
 	// Only one condition of a given type is allowed.
-	Type RequestConditionType `json:"type" protobuf:"bytes,1,opt,name=type,casttype=RequestConditionType"`
+	Type *RequestConditionType `json:"type" protobuf:"bytes,1,opt,name=type,casttype=RequestConditionType"`
 	// status of the condition, one of True, False, Unknown.
 	// Approved, Denied, and Failed conditions may not be "False" or "Unknown".
 	Status v1.ConditionStatus `json:"status" protobuf:"bytes,6,opt,name=status,casttype=k8s.io/api/core/v1.ConditionStatus"`
 	// reason indicates a brief reason for the request state
 	// +optional
-	Reason string `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
+	Reason *string `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
 	// message contains a human readable message with details about the request state
 	// +optional
-	Message string `json:"message,omitempty" protobuf:"bytes,3,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,3,opt,name=message"`
 	// lastUpdateTime is the time of the last update to this condition
 	// +optional
 	LastUpdateTime metav1.Time `json:"lastUpdateTime,omitempty" protobuf:"bytes,4,opt,name=lastUpdateTime"`
