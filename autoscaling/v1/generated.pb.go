@@ -26,7 +26,7 @@ import (
 
 	proto "github.com/gogo/protobuf/proto"
 
-	k8s_io_api_core_v1 "k8s.io/api/core/v1"
+	k8s_io_api_core_v1 "go.linka.cloud/k8s/core/v1"
 	resource "k8s.io/apimachinery/pkg/api/resource"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
@@ -636,135 +636,134 @@ func (m *ScaleStatus) XXX_DiscardUnknown() {
 var xxx_messageInfo_ScaleStatus proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*ContainerResourceMetricSource)(nil), "k8s.io.api.autoscaling.v1.ContainerResourceMetricSource")
-	proto.RegisterType((*ContainerResourceMetricStatus)(nil), "k8s.io.api.autoscaling.v1.ContainerResourceMetricStatus")
-	proto.RegisterType((*CrossVersionObjectReference)(nil), "k8s.io.api.autoscaling.v1.CrossVersionObjectReference")
-	proto.RegisterType((*ExternalMetricSource)(nil), "k8s.io.api.autoscaling.v1.ExternalMetricSource")
-	proto.RegisterType((*ExternalMetricStatus)(nil), "k8s.io.api.autoscaling.v1.ExternalMetricStatus")
-	proto.RegisterType((*HorizontalPodAutoscaler)(nil), "k8s.io.api.autoscaling.v1.HorizontalPodAutoscaler")
-	proto.RegisterType((*HorizontalPodAutoscalerCondition)(nil), "k8s.io.api.autoscaling.v1.HorizontalPodAutoscalerCondition")
-	proto.RegisterType((*HorizontalPodAutoscalerList)(nil), "k8s.io.api.autoscaling.v1.HorizontalPodAutoscalerList")
-	proto.RegisterType((*HorizontalPodAutoscalerSpec)(nil), "k8s.io.api.autoscaling.v1.HorizontalPodAutoscalerSpec")
-	proto.RegisterType((*HorizontalPodAutoscalerStatus)(nil), "k8s.io.api.autoscaling.v1.HorizontalPodAutoscalerStatus")
-	proto.RegisterType((*MetricSpec)(nil), "k8s.io.api.autoscaling.v1.MetricSpec")
-	proto.RegisterType((*MetricStatus)(nil), "k8s.io.api.autoscaling.v1.MetricStatus")
-	proto.RegisterType((*ObjectMetricSource)(nil), "k8s.io.api.autoscaling.v1.ObjectMetricSource")
-	proto.RegisterType((*ObjectMetricStatus)(nil), "k8s.io.api.autoscaling.v1.ObjectMetricStatus")
-	proto.RegisterType((*PodsMetricSource)(nil), "k8s.io.api.autoscaling.v1.PodsMetricSource")
-	proto.RegisterType((*PodsMetricStatus)(nil), "k8s.io.api.autoscaling.v1.PodsMetricStatus")
-	proto.RegisterType((*ResourceMetricSource)(nil), "k8s.io.api.autoscaling.v1.ResourceMetricSource")
-	proto.RegisterType((*ResourceMetricStatus)(nil), "k8s.io.api.autoscaling.v1.ResourceMetricStatus")
-	proto.RegisterType((*Scale)(nil), "k8s.io.api.autoscaling.v1.Scale")
-	proto.RegisterType((*ScaleSpec)(nil), "k8s.io.api.autoscaling.v1.ScaleSpec")
-	proto.RegisterType((*ScaleStatus)(nil), "k8s.io.api.autoscaling.v1.ScaleStatus")
+	proto.RegisterType((*ContainerResourceMetricSource)(nil), "go.linka.cloud.k8s.autoscaling.v1.ContainerResourceMetricSource")
+	proto.RegisterType((*ContainerResourceMetricStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.ContainerResourceMetricStatus")
+	proto.RegisterType((*CrossVersionObjectReference)(nil), "go.linka.cloud.k8s.autoscaling.v1.CrossVersionObjectReference")
+	proto.RegisterType((*ExternalMetricSource)(nil), "go.linka.cloud.k8s.autoscaling.v1.ExternalMetricSource")
+	proto.RegisterType((*ExternalMetricStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.ExternalMetricStatus")
+	proto.RegisterType((*HorizontalPodAutoscaler)(nil), "go.linka.cloud.k8s.autoscaling.v1.HorizontalPodAutoscaler")
+	proto.RegisterType((*HorizontalPodAutoscalerCondition)(nil), "go.linka.cloud.k8s.autoscaling.v1.HorizontalPodAutoscalerCondition")
+	proto.RegisterType((*HorizontalPodAutoscalerList)(nil), "go.linka.cloud.k8s.autoscaling.v1.HorizontalPodAutoscalerList")
+	proto.RegisterType((*HorizontalPodAutoscalerSpec)(nil), "go.linka.cloud.k8s.autoscaling.v1.HorizontalPodAutoscalerSpec")
+	proto.RegisterType((*HorizontalPodAutoscalerStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.HorizontalPodAutoscalerStatus")
+	proto.RegisterType((*MetricSpec)(nil), "go.linka.cloud.k8s.autoscaling.v1.MetricSpec")
+	proto.RegisterType((*MetricStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.MetricStatus")
+	proto.RegisterType((*ObjectMetricSource)(nil), "go.linka.cloud.k8s.autoscaling.v1.ObjectMetricSource")
+	proto.RegisterType((*ObjectMetricStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.ObjectMetricStatus")
+	proto.RegisterType((*PodsMetricSource)(nil), "go.linka.cloud.k8s.autoscaling.v1.PodsMetricSource")
+	proto.RegisterType((*PodsMetricStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.PodsMetricStatus")
+	proto.RegisterType((*ResourceMetricSource)(nil), "go.linka.cloud.k8s.autoscaling.v1.ResourceMetricSource")
+	proto.RegisterType((*ResourceMetricStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.ResourceMetricStatus")
+	proto.RegisterType((*Scale)(nil), "go.linka.cloud.k8s.autoscaling.v1.Scale")
+	proto.RegisterType((*ScaleSpec)(nil), "go.linka.cloud.k8s.autoscaling.v1.ScaleSpec")
+	proto.RegisterType((*ScaleStatus)(nil), "go.linka.cloud.k8s.autoscaling.v1.ScaleStatus")
 }
 
 func init() {
-	proto.RegisterFile("k8s.io/api/autoscaling/v1/generated.proto", fileDescriptor_1972394c0c7aac8b)
+	proto.RegisterFile("go.linka.cloud/k8s/autoscaling/v1/generated.proto", fileDescriptor_1972394c0c7aac8b)
 }
 
 var fileDescriptor_1972394c0c7aac8b = []byte{
-	// 1593 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x59, 0x4d, 0x6c, 0x13, 0xd7,
-	0x16, 0x8e, 0x7f, 0x12, 0x92, 0xe3, 0x90, 0x9f, 0x0b, 0x0f, 0x92, 0xf0, 0xf0, 0x44, 0xf3, 0x10,
-	0x0a, 0xef, 0x3d, 0xc6, 0x8d, 0x4b, 0x11, 0x5d, 0x55, 0xb1, 0x5b, 0x0a, 0x6a, 0x0c, 0xe1, 0x26,
-	0x50, 0xfa, 0x2b, 0x6e, 0xc6, 0x17, 0x67, 0x88, 0x67, 0xc6, 0x9a, 0x19, 0x5b, 0x04, 0x09, 0xa9,
-	0x5d, 0x74, 0xdf, 0x0d, 0xed, 0xb6, 0x95, 0xba, 0xed, 0x9a, 0x75, 0x77, 0x2c, 0x59, 0x20, 0x95,
-	0x95, 0x55, 0xa6, 0x8b, 0x2e, 0xba, 0xea, 0x96, 0x55, 0x75, 0xef, 0xdc, 0x19, 0xcf, 0xd8, 0x9e,
-	0x89, 0xe3, 0x84, 0xa8, 0xad, 0xd8, 0x65, 0x7c, 0xcf, 0xf9, 0xce, 0xbd, 0xe7, 0xff, 0x9c, 0xc0,
-	0xb9, 0xed, 0x4b, 0xb6, 0xa2, 0x99, 0x05, 0xd2, 0xd0, 0x0a, 0xa4, 0xe9, 0x98, 0xb6, 0x4a, 0xea,
-	0x9a, 0x51, 0x2b, 0xb4, 0x96, 0x0b, 0x35, 0x6a, 0x50, 0x8b, 0x38, 0xb4, 0xaa, 0x34, 0x2c, 0xd3,
-	0x31, 0xd1, 0xbc, 0x47, 0xaa, 0x90, 0x86, 0xa6, 0x84, 0x48, 0x95, 0xd6, 0xf2, 0xc2, 0xf9, 0x9a,
-	0xe6, 0x6c, 0x35, 0x37, 0x15, 0xd5, 0xd4, 0x0b, 0x35, 0xb3, 0x66, 0x16, 0x38, 0xc7, 0x66, 0xf3,
-	0x2e, 0xff, 0xe2, 0x1f, 0xfc, 0x2f, 0x0f, 0x69, 0x41, 0x0e, 0x09, 0x55, 0x4d, 0x8b, 0xf6, 0x91,
-	0xb6, 0x70, 0xa1, 0x43, 0xa3, 0x13, 0x75, 0x4b, 0x33, 0xa8, 0xb5, 0x53, 0x68, 0x6c, 0xd7, 0x38,
-	0x93, 0x45, 0x6d, 0xb3, 0x69, 0xa9, 0x74, 0x4f, 0x5c, 0x76, 0x41, 0xa7, 0x0e, 0xe9, 0x27, 0xab,
-	0x10, 0xc7, 0x65, 0x35, 0x0d, 0x47, 0xd3, 0x7b, 0xc5, 0x5c, 0xdc, 0x8d, 0xc1, 0x56, 0xb7, 0xa8,
-	0x4e, 0xba, 0xf9, 0xe4, 0xdf, 0xd2, 0x70, 0xba, 0x6c, 0x1a, 0x0e, 0x61, 0x1c, 0x58, 0x3c, 0xa2,
-	0x42, 0x1d, 0x4b, 0x53, 0xd7, 0xf9, 0xdf, 0xa8, 0x0c, 0x59, 0x83, 0xe8, 0x74, 0x2e, 0xb5, 0x98,
-	0x5a, 0x9a, 0x28, 0x15, 0x9e, 0xb4, 0xa5, 0x11, 0xb7, 0x2d, 0x65, 0xaf, 0x11, 0x9d, 0xbe, 0x6c,
-	0x4b, 0x52, 0xaf, 0xe2, 0x14, 0x1f, 0x86, 0x91, 0x60, 0xce, 0x8c, 0x6e, 0xc3, 0x9c, 0x43, 0xac,
-	0x1a, 0x75, 0x56, 0x5a, 0xd4, 0x22, 0x35, 0x7a, 0xd3, 0xd1, 0xea, 0xda, 0x03, 0xe2, 0x68, 0xa6,
-	0x31, 0x97, 0x5e, 0x4c, 0x2d, 0x8d, 0x96, 0xfe, 0xed, 0xb6, 0xa5, 0xb9, 0x8d, 0x18, 0x1a, 0x1c,
-	0xcb, 0x8d, 0x5a, 0x80, 0x22, 0x67, 0xb7, 0x48, 0xbd, 0x49, 0xe7, 0x32, 0x8b, 0xa9, 0xa5, 0x5c,
-	0x51, 0x51, 0x3a, 0x0e, 0x12, 0x68, 0x45, 0x69, 0x6c, 0xd7, 0xb8, 0xc7, 0xf8, 0x26, 0x53, 0x6e,
-	0x34, 0x89, 0xe1, 0x68, 0xce, 0x4e, 0xe9, 0x84, 0xdb, 0x96, 0xd0, 0x46, 0x0f, 0x1a, 0xee, 0x23,
-	0x01, 0x15, 0x60, 0x42, 0xf5, 0xf5, 0x36, 0x37, 0xca, 0x75, 0x33, 0x2b, 0x74, 0x33, 0xd1, 0x51,
-	0x68, 0x87, 0x46, 0xfe, 0x23, 0x41, 0xd3, 0x0e, 0x71, 0x9a, 0xf6, 0xc1, 0x68, 0xfa, 0x13, 0x98,
-	0x57, 0x9b, 0x96, 0x45, 0x8d, 0x78, 0x55, 0x9f, 0x76, 0xdb, 0xd2, 0x7c, 0x39, 0x8e, 0x08, 0xc7,
-	0xf3, 0xa3, 0x87, 0x70, 0x2c, 0x7a, 0xb8, 0x1f, 0x6d, 0x9f, 0x12, 0x0f, 0x3c, 0x56, 0xee, 0x85,
-	0xc4, 0xfd, 0xe4, 0x44, 0x75, 0x9e, 0x1d, 0x40, 0xe7, 0x8f, 0x52, 0x70, 0xaa, 0x6c, 0x99, 0xb6,
-	0x7d, 0x8b, 0x5a, 0xb6, 0x66, 0x1a, 0xd7, 0x37, 0xef, 0x51, 0xd5, 0xc1, 0xf4, 0x2e, 0xb5, 0xa8,
-	0xa1, 0x52, 0xb4, 0x08, 0xd9, 0x6d, 0xcd, 0xa8, 0x0a, 0x8d, 0x4f, 0xfa, 0x1a, 0xff, 0x40, 0x33,
-	0xaa, 0x98, 0x9f, 0x30, 0x0a, 0x6e, 0x93, 0x74, 0x94, 0x22, 0xa4, 0xf0, 0x22, 0x00, 0x69, 0x68,
-	0x42, 0x00, 0x57, 0xc5, 0x44, 0x09, 0x09, 0x3a, 0x58, 0x59, 0xbb, 0x2a, 0x4e, 0x70, 0x88, 0x4a,
-	0xfe, 0x26, 0x03, 0xc7, 0xdf, 0xbb, 0xef, 0x50, 0xcb, 0x20, 0xf5, 0x48, 0xb0, 0x15, 0x01, 0x74,
-	0xfe, 0x7d, 0xad, 0xe3, 0x08, 0x01, 0x58, 0x25, 0x38, 0xc1, 0x21, 0x2a, 0x64, 0xc2, 0x94, 0xf7,
-	0xb5, 0x4e, 0xeb, 0x54, 0x75, 0x4c, 0x8b, 0x5f, 0x36, 0x57, 0x7c, 0x33, 0xc9, 0x1e, 0xb6, 0xc2,
-	0x52, 0x8f, 0xd2, 0x5a, 0x56, 0x56, 0xc9, 0x26, 0xad, 0xfb, 0xac, 0x25, 0xe4, 0xb6, 0xa5, 0xa9,
-	0x4a, 0x04, 0x0e, 0x77, 0xc1, 0x23, 0x02, 0x39, 0x2f, 0x20, 0xf6, 0x63, 0xfd, 0x69, 0xb7, 0x2d,
-	0xe5, 0x36, 0x3a, 0x30, 0x38, 0x8c, 0x19, 0x13, 0xd5, 0xd9, 0x57, 0x1d, 0xd5, 0xf2, 0x77, 0xbd,
-	0x86, 0xf1, 0x62, 0xf3, 0x6f, 0x61, 0x98, 0x2d, 0x98, 0x14, 0x61, 0xb3, 0x1f, 0xcb, 0x1c, 0x17,
-	0xcf, 0x9a, 0x2c, 0x87, 0xb0, 0x70, 0x04, 0x19, 0xed, 0xf4, 0x4f, 0x04, 0xc3, 0x19, 0xe8, 0xe4,
-	0x5e, 0x92, 0x80, 0xfc, 0x38, 0x0d, 0x27, 0xaf, 0x98, 0x96, 0xf6, 0x80, 0x45, 0x79, 0x7d, 0xcd,
-	0xac, 0xae, 0x88, 0xca, 0x4f, 0x2d, 0x74, 0x07, 0xc6, 0x99, 0xf6, 0xaa, 0xc4, 0x21, 0xdc, 0x46,
-	0xb9, 0xe2, 0x1b, 0x83, 0xe9, 0xda, 0x4b, 0x0c, 0x15, 0xea, 0x90, 0x8e, 0x55, 0x3b, 0xbf, 0xe1,
-	0x00, 0x15, 0xdd, 0x86, 0xac, 0xdd, 0xa0, 0xaa, 0xb0, 0xe4, 0x45, 0x25, 0xb6, 0x03, 0x51, 0x62,
-	0xee, 0xb8, 0xde, 0xa0, 0x6a, 0x27, 0x8f, 0xb0, 0x2f, 0xcc, 0x11, 0xd1, 0x1d, 0x18, 0xb3, 0xb9,
-	0xaf, 0x09, 0xb3, 0x5d, 0x1a, 0x02, 0x9b, 0xf3, 0x97, 0xa6, 0x04, 0xfa, 0x98, 0xf7, 0x8d, 0x05,
-	0xae, 0xfc, 0x55, 0x06, 0x16, 0x63, 0x38, 0xcb, 0xa6, 0x51, 0xd5, 0x78, 0x8a, 0xbf, 0x02, 0x59,
-	0x67, 0xa7, 0xe1, 0xbb, 0xf8, 0x05, 0xff, 0xa2, 0x1b, 0x3b, 0x0d, 0x56, 0x84, 0xce, 0xec, 0xc6,
-	0xcf, 0xe8, 0x30, 0x47, 0x40, 0xab, 0xc1, 0x83, 0xd2, 0x11, 0x2c, 0x71, 0xad, 0x97, 0x6d, 0xa9,
-	0x4f, 0xd7, 0xa5, 0x04, 0x48, 0xd1, 0xcb, 0xb3, 0x8c, 0x50, 0x27, 0xb6, 0xb3, 0x61, 0x11, 0xc3,
-	0xf6, 0x24, 0x69, 0xba, 0xef, 0xe1, 0xff, 0x1d, 0xcc, 0xc8, 0x8c, 0xa3, 0xb4, 0x20, 0x6e, 0x81,
-	0x56, 0x7b, 0xd0, 0x70, 0x1f, 0x09, 0xe8, 0x2c, 0x8c, 0x59, 0x94, 0xd8, 0xa6, 0x21, 0x0a, 0x4e,
-	0xa0, 0x5c, 0xcc, 0x7f, 0xc5, 0xe2, 0x14, 0x9d, 0x83, 0x23, 0x3a, 0xb5, 0x6d, 0x52, 0xa3, 0xa2,
-	0x1b, 0x98, 0x16, 0x84, 0x47, 0x2a, 0xde, 0xcf, 0xd8, 0x3f, 0x97, 0x9f, 0xa5, 0xe0, 0x54, 0x8c,
-	0x1e, 0x57, 0x35, 0xdb, 0x41, 0x9f, 0xf6, 0x78, 0xb1, 0x32, 0x60, 0xc6, 0xd0, 0x6c, 0xcf, 0x87,
-	0x67, 0x84, 0xec, 0x71, 0xff, 0x97, 0x90, 0x07, 0x7f, 0x08, 0xa3, 0x9a, 0x43, 0x75, 0x66, 0x95,
-	0xcc, 0x52, 0xae, 0x58, 0xdc, 0xbb, 0x9b, 0x95, 0x8e, 0x0a, 0xf8, 0xd1, 0xab, 0x0c, 0x08, 0x7b,
-	0x78, 0xf2, 0xef, 0xe9, 0xd8, 0x67, 0x31, 0x37, 0x47, 0x2d, 0x98, 0xe2, 0x5f, 0x5e, 0x2a, 0xc6,
-	0xf4, 0xae, 0x78, 0x5c, 0x52, 0x10, 0x25, 0x14, 0xef, 0xd2, 0x09, 0x71, 0x8b, 0xa9, 0xf5, 0x08,
-	0x2a, 0xee, 0x92, 0x82, 0x96, 0x21, 0xa7, 0x6b, 0x06, 0xa6, 0x8d, 0xba, 0xa6, 0x12, 0x5b, 0xf4,
-	0x40, 0xbc, 0xfc, 0x54, 0x3a, 0x3f, 0xe3, 0x30, 0x0d, 0x7a, 0x0b, 0x72, 0x3a, 0xb9, 0x1f, 0xb0,
-	0x64, 0x38, 0xcb, 0x31, 0x21, 0x2f, 0x57, 0xe9, 0x1c, 0xe1, 0x30, 0x1d, 0xba, 0x07, 0x79, 0xaf,
-	0xa6, 0x94, 0xd7, 0x6e, 0x86, 0xda, 0xa6, 0x35, 0x6a, 0xa9, 0xd4, 0x70, 0x98, 0x6b, 0x64, 0x39,
-	0x92, 0xec, 0xb6, 0xa5, 0xfc, 0x46, 0x22, 0x25, 0xde, 0x05, 0x49, 0xfe, 0x29, 0x03, 0xa7, 0x13,
-	0xd3, 0x00, 0xba, 0x0c, 0xc8, 0xdc, 0xb4, 0xa9, 0xd5, 0xa2, 0xd5, 0xf7, 0xbd, 0xae, 0x9f, 0x35,
-	0x28, 0x4c, 0xe7, 0x19, 0xaf, 0x26, 0x5e, 0xef, 0x39, 0xc5, 0x7d, 0x38, 0x90, 0x0a, 0x47, 0x59,
-	0x5c, 0x78, 0x5a, 0xd6, 0x44, 0x2f, 0xb4, 0xb7, 0xa0, 0x9b, 0x75, 0xdb, 0xd2, 0xd1, 0xd5, 0x30,
-	0x08, 0x8e, 0x62, 0xa2, 0x15, 0x98, 0x16, 0xc9, 0xbe, 0x4b, 0xeb, 0x27, 0x85, 0xd6, 0xa7, 0xcb,
-	0xd1, 0x63, 0xdc, 0x4d, 0xcf, 0x20, 0xaa, 0xd4, 0xd6, 0x2c, 0x5a, 0x0d, 0x20, 0xb2, 0x51, 0x88,
-	0x77, 0xa3, 0xc7, 0xb8, 0x9b, 0x1e, 0xe9, 0x20, 0x09, 0xd4, 0x58, 0x0b, 0x8e, 0x72, 0xc8, 0xff,
-	0xb8, 0x6d, 0x49, 0x2a, 0x27, 0x93, 0xe2, 0xdd, 0xb0, 0xe4, 0x47, 0x59, 0x10, 0xbd, 0x03, 0x0f,
-	0x90, 0x0b, 0x91, 0xd4, 0xbb, 0xd8, 0x95, 0x7a, 0x67, 0xc2, 0x8d, 0x62, 0x28, 0xcd, 0xde, 0x80,
-	0x31, 0x93, 0x47, 0x86, 0xb0, 0xcb, 0xf9, 0x84, 0x70, 0x0a, 0x4a, 0x5a, 0x00, 0x54, 0x02, 0x96,
-	0xcb, 0x44, 0x68, 0x09, 0x20, 0x74, 0x15, 0xb2, 0x0d, 0xb3, 0xea, 0x17, 0xa2, 0xff, 0x25, 0x00,
-	0xae, 0x99, 0x55, 0x3b, 0x02, 0x37, 0xce, 0x6e, 0xcc, 0x7e, 0xc5, 0x1c, 0x02, 0x7d, 0x04, 0xe3,
-	0x7e, 0xc1, 0x17, 0xdd, 0x41, 0x21, 0x01, 0xae, 0xdf, 0x00, 0x5a, 0x9a, 0x64, 0x89, 0xcc, 0x3f,
-	0xc1, 0x01, 0x1c, 0x7a, 0x08, 0xb3, 0x6a, 0xf7, 0x3c, 0x35, 0x77, 0x64, 0xd7, 0xda, 0x99, 0x38,
-	0xed, 0x96, 0xfe, 0xe5, 0xb6, 0xa5, 0xd9, 0x1e, 0x12, 0xdc, 0x2b, 0x89, 0xbd, 0x8c, 0x8a, 0x4e,
-	0x91, 0x3b, 0x45, 0xf2, 0xcb, 0xfa, 0x75, 0xfb, 0xde, 0xcb, 0xfc, 0x13, 0x1c, 0xc0, 0xc9, 0xdf,
-	0x66, 0x61, 0x32, 0xd2, 0x7d, 0x1e, 0xb2, 0x67, 0x78, 0x6d, 0xc4, 0x81, 0x79, 0x86, 0x07, 0x77,
-	0xa0, 0x9e, 0xe1, 0x41, 0x1e, 0x92, 0x67, 0x78, 0xc2, 0x0e, 0xc9, 0x33, 0x42, 0x2f, 0xeb, 0xe3,
-	0x19, 0xcf, 0x32, 0x80, 0x7a, 0x83, 0x18, 0x7d, 0x0e, 0x63, 0x5e, 0xb9, 0xd8, 0x67, 0x49, 0x0d,
-	0x9a, 0x1b, 0x51, 0x3d, 0x05, 0x6a, 0xd7, 0xf4, 0x93, 0x1e, 0x68, 0xfa, 0xa1, 0x07, 0x31, 0x25,
-	0x06, 0x35, 0x37, 0x76, 0x52, 0xfc, 0x0c, 0xc6, 0x6d, 0x7f, 0xbc, 0xca, 0x0e, 0x3f, 0x5e, 0x71,
-	0x85, 0x07, 0x83, 0x55, 0x00, 0x89, 0xaa, 0x30, 0x49, 0xc2, 0x13, 0xce, 0xe8, 0x50, 0xcf, 0x98,
-	0x61, 0xe3, 0x54, 0x64, 0xb4, 0x89, 0xa0, 0xca, 0x3f, 0x77, 0x9b, 0xd5, 0x0b, 0xfb, 0xbf, 0xa2,
-	0x59, 0x0f, 0x6f, 0xc6, 0xfc, 0x47, 0x58, 0xf6, 0xfb, 0x34, 0xcc, 0x74, 0x17, 0xc9, 0xa1, 0x96,
-	0x09, 0x0f, 0xfa, 0x6e, 0x44, 0xd2, 0x43, 0x5d, 0x3a, 0x98, 0x81, 0x06, 0xdc, 0x75, 0x86, 0x2d,
-	0x91, 0x39, 0x70, 0x4b, 0xc8, 0x3f, 0x44, 0x75, 0x34, 0xfc, 0xc2, 0x25, 0x66, 0x3d, 0x99, 0x3e,
-	0xa4, 0xf5, 0xe4, 0x2b, 0x56, 0xd3, 0x8f, 0x69, 0x38, 0xfe, 0x7a, 0x43, 0x3f, 0xf8, 0x2e, 0xef,
-	0x71, 0xaf, 0xbe, 0x5e, 0xef, 0xd9, 0x07, 0x5a, 0xb1, 0x7d, 0x99, 0x86, 0x51, 0x3e, 0x9a, 0x1d,
-	0xc2, 0x42, 0xed, 0x72, 0x64, 0xa1, 0x76, 0x26, 0xa1, 0xc2, 0xf1, 0x1b, 0xc5, 0xae, 0xcf, 0xae,
-	0x75, 0xad, 0xcf, 0xce, 0xee, 0x8a, 0x94, 0xbc, 0x2c, 0x7b, 0x1b, 0x26, 0x02, 0x81, 0xe8, 0xff,
-	0xac, 0x57, 0x15, 0x33, 0x65, 0x8a, 0xdb, 0x36, 0xd8, 0xb0, 0x04, 0xc3, 0x64, 0x40, 0x21, 0x6b,
-	0x90, 0x0b, 0x49, 0xd8, 0x1b, 0x33, 0xa3, 0xb6, 0xc3, 0xeb, 0xe2, 0x89, 0x0e, 0x75, 0x6f, 0x4e,
-	0x28, 0xbd, 0xf3, 0xe4, 0x45, 0x7e, 0xe4, 0xe9, 0x8b, 0xfc, 0xc8, 0xf3, 0x17, 0xf9, 0x91, 0x2f,
-	0xdc, 0x7c, 0xea, 0x89, 0x9b, 0x4f, 0x3d, 0x75, 0xf3, 0xa9, 0xe7, 0x6e, 0x3e, 0xf5, 0x8b, 0x9b,
-	0x4f, 0x7d, 0xfd, 0x6b, 0x7e, 0xe4, 0xe3, 0xf9, 0xd8, 0x7f, 0xa9, 0xfe, 0x19, 0x00, 0x00, 0xff,
-	0xff, 0xd7, 0x67, 0xd4, 0x08, 0x6e, 0x1d, 0x00, 0x00,
+	// 1582 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x59, 0x4d, 0x6f, 0x13, 0xc7,
+	0x1b, 0x8f, 0xdf, 0x42, 0xf2, 0x38, 0x09, 0x61, 0xc2, 0xff, 0x8f, 0x93, 0x80, 0x37, 0xda, 0xd2,
+	0x2a, 0x2d, 0x62, 0x4d, 0x52, 0x8a, 0xb8, 0x54, 0x15, 0x36, 0x7d, 0xa1, 0x4d, 0x20, 0x4c, 0x0c,
+	0x6d, 0x29, 0x95, 0x3a, 0x59, 0x0f, 0xce, 0x12, 0x7b, 0xd7, 0xda, 0x5d, 0x47, 0x04, 0x09, 0xa9,
+	0xd7, 0xde, 0xfa, 0x72, 0x6d, 0xa5, 0x7e, 0x81, 0xaa, 0xc7, 0xaa, 0xdf, 0x80, 0x43, 0xa5, 0x72,
+	0xe8, 0x81, 0xd3, 0xaa, 0x2c, 0xe7, 0x7e, 0x00, 0x38, 0x55, 0x33, 0x3b, 0x5e, 0xef, 0xda, 0xbb,
+	0x6b, 0xe7, 0x85, 0x08, 0x55, 0xdc, 0xbc, 0x33, 0xcf, 0xf3, 0x9b, 0x99, 0xe7, 0xfd, 0x79, 0x0c,
+	0x6f, 0x6e, 0x5d, 0xb4, 0x14, 0xcd, 0x28, 0x91, 0x96, 0x56, 0x22, 0x6d, 0xdb, 0xb0, 0x54, 0xd2,
+	0xd0, 0xf4, 0x7a, 0x69, 0x7b, 0xa9, 0x54, 0xa7, 0x3a, 0x35, 0x89, 0x4d, 0x6b, 0x4a, 0xcb, 0x34,
+	0x6c, 0x03, 0xcd, 0x7a, 0xa4, 0x0a, 0x69, 0x69, 0x4a, 0x80, 0x54, 0xd9, 0x5e, 0x9a, 0x3b, 0x5b,
+	0xd7, 0xec, 0xcd, 0xf6, 0x86, 0xa2, 0x1a, 0xcd, 0x52, 0xdd, 0xa8, 0x1b, 0x25, 0xce, 0xb1, 0xd1,
+	0xbe, 0xc3, 0xbf, 0xf8, 0x07, 0xff, 0xe5, 0x21, 0xcd, 0xc9, 0x81, 0x43, 0x55, 0xc3, 0xa4, 0x11,
+	0xa7, 0xcd, 0x9d, 0xef, 0xd2, 0x34, 0x89, 0xba, 0xa9, 0xe9, 0xd4, 0xdc, 0x29, 0xb5, 0xb6, 0xea,
+	0x9c, 0xc9, 0xa4, 0x96, 0xd1, 0x36, 0x55, 0xba, 0x2b, 0x2e, 0xab, 0xd4, 0xa4, 0x36, 0x89, 0x3a,
+	0xab, 0x14, 0xc7, 0x65, 0xb6, 0x75, 0x5b, 0x6b, 0xf6, 0x1f, 0x73, 0x61, 0x10, 0x83, 0xa5, 0x6e,
+	0xd2, 0x26, 0xe9, 0xe5, 0x93, 0x9f, 0xa6, 0xe1, 0x54, 0xc5, 0xd0, 0x6d, 0xc2, 0x38, 0xb0, 0x78,
+	0xc4, 0x2a, 0xb5, 0x4d, 0x4d, 0x5d, 0xe7, 0xbf, 0x51, 0x05, 0xb2, 0x3a, 0x69, 0xd2, 0x42, 0x6a,
+	0x21, 0xb5, 0x38, 0x5e, 0x2e, 0x3d, 0x74, 0xa4, 0x11, 0xd7, 0x91, 0xb2, 0x57, 0x49, 0x93, 0x3e,
+	0x77, 0x24, 0xa9, 0x5f, 0x70, 0x4a, 0x07, 0x86, 0x91, 0x60, 0xce, 0x8c, 0x3e, 0x83, 0x82, 0x4d,
+	0xcc, 0x3a, 0xb5, 0x2f, 0x6d, 0x53, 0x93, 0xd4, 0xe9, 0x0d, 0x5b, 0x6b, 0x68, 0xf7, 0x89, 0xad,
+	0x19, 0x7a, 0x21, 0xbd, 0x90, 0x5a, 0xcc, 0x95, 0x4f, 0xba, 0x8e, 0x54, 0xa8, 0xc6, 0xd0, 0xe0,
+	0x58, 0x6e, 0xb4, 0x0d, 0x28, 0xb4, 0x77, 0x93, 0x34, 0xda, 0xb4, 0x90, 0x59, 0x48, 0x2d, 0xe6,
+	0x97, 0x15, 0xa5, 0x6b, 0x20, 0xbe, 0x54, 0x94, 0xd6, 0x56, 0x9d, 0x5b, 0x4c, 0x47, 0x65, 0xca,
+	0xf5, 0x36, 0xd1, 0x6d, 0xcd, 0xde, 0x29, 0xff, 0xdf, 0x75, 0x24, 0x54, 0xed, 0x43, 0xc3, 0x11,
+	0x27, 0xa0, 0x33, 0x30, 0xae, 0x76, 0xe4, 0x56, 0xc8, 0x71, 0xd9, 0x4c, 0xba, 0x8e, 0x34, 0xde,
+	0x15, 0x66, 0x77, 0x5f, 0xfe, 0x27, 0x41, 0xca, 0x36, 0xb1, 0xdb, 0xd6, 0xc1, 0x48, 0xf9, 0x0b,
+	0x98, 0x55, 0xdb, 0xa6, 0x49, 0xf5, 0x78, 0x31, 0x9f, 0x72, 0x1d, 0x69, 0xb6, 0x12, 0x47, 0x84,
+	0xe3, 0xf9, 0xd1, 0x03, 0x98, 0x09, 0x6f, 0xee, 0x47, 0xd2, 0xf3, 0xe2, 0x81, 0x33, 0x95, 0x7e,
+	0x48, 0x1c, 0x75, 0x4e, 0x58, 0xde, 0xd9, 0x01, 0xf2, 0xfe, 0x26, 0x05, 0xf3, 0x15, 0xd3, 0xb0,
+	0xac, 0x9b, 0xd4, 0xb4, 0x34, 0x43, 0xbf, 0xb6, 0x71, 0x97, 0xaa, 0x36, 0xa6, 0x77, 0xa8, 0x49,
+	0x75, 0x95, 0xa2, 0x93, 0x90, 0xdd, 0xd2, 0xf4, 0x9a, 0x90, 0xf6, 0x18, 0x93, 0xf4, 0x27, 0x9a,
+	0x5e, 0xc3, 0x7c, 0x95, 0xed, 0x72, 0x5d, 0xa4, 0xbb, 0xbb, 0x01, 0x21, 0x2b, 0x00, 0xa4, 0xa5,
+	0x09, 0x60, 0xfe, 0xfc, 0xf1, 0xf2, 0x94, 0xeb, 0x48, 0x70, 0x69, 0xed, 0x8a, 0x58, 0xc5, 0x01,
+	0x0a, 0xf9, 0xfb, 0x0c, 0x1c, 0x7f, 0xff, 0x9e, 0x4d, 0x4d, 0x9d, 0x34, 0x42, 0x8e, 0xa5, 0x00,
+	0x34, 0xf9, 0xf7, 0xd5, 0xae, 0xe2, 0x39, 0xd0, 0xaa, 0xbf, 0x8a, 0x03, 0x14, 0xc8, 0x80, 0x29,
+	0xef, 0x6b, 0x9d, 0x36, 0xa8, 0x6a, 0x1b, 0x26, 0xbf, 0x60, 0x7e, 0xf9, 0xed, 0x24, 0xd9, 0x5b,
+	0x0a, 0x0b, 0x31, 0xca, 0xf6, 0x92, 0xb2, 0x42, 0x36, 0x68, 0xa3, 0xc3, 0x5a, 0x46, 0xae, 0x23,
+	0x4d, 0xad, 0x86, 0xe0, 0x70, 0x0f, 0x3c, 0x22, 0x90, 0xf7, 0x0c, 0x7f, 0x3f, 0x9a, 0x3e, 0xea,
+	0x3a, 0x52, 0xbe, 0xda, 0x85, 0xc1, 0x41, 0xcc, 0x18, 0xef, 0xcd, 0xbe, 0x68, 0xef, 0x95, 0x7f,
+	0xec, 0x57, 0x8a, 0xe7, 0x87, 0x2f, 0xbd, 0x52, 0x36, 0x61, 0x42, 0xb8, 0xc7, 0x7e, 0xb4, 0x72,
+	0x5c, 0xf8, 0xdf, 0x44, 0x25, 0x80, 0x85, 0x43, 0xc8, 0x68, 0x27, 0xda, 0xe1, 0xf7, 0xa6, 0x9c,
+	0x13, 0xbb, 0x71, 0x76, 0xf9, 0xd7, 0x34, 0x9c, 0xf8, 0xc8, 0x30, 0xb5, 0xfb, 0xcc, 0xa3, 0x1b,
+	0x6b, 0x46, 0xed, 0x92, 0xc8, 0xee, 0xd4, 0x44, 0x5f, 0xc1, 0x18, 0x93, 0x5e, 0x8d, 0xd8, 0x84,
+	0xeb, 0x27, 0xbf, 0x7c, 0x6e, 0x38, 0x59, 0x7b, 0x41, 0x60, 0x95, 0xda, 0xa4, 0x8c, 0xc4, 0xf3,
+	0xa1, 0xbb, 0x86, 0x7d, 0x54, 0x54, 0x85, 0xac, 0xd5, 0xa2, 0xaa, 0xd0, 0xe4, 0x05, 0x25, 0xb6,
+	0xca, 0x50, 0x62, 0xee, 0xb8, 0xde, 0xa2, 0xaa, 0x17, 0x37, 0xd8, 0x2f, 0xcc, 0xd1, 0xd0, 0x6d,
+	0x18, 0xb5, 0xb8, 0x8d, 0x09, 0x95, 0x5d, 0xdc, 0x03, 0x2e, 0xe7, 0x2f, 0x83, 0xeb, 0x48, 0xa3,
+	0xde, 0x6f, 0x2c, 0x30, 0xe5, 0x67, 0x69, 0x58, 0x88, 0xe1, 0xaa, 0x18, 0x7a, 0x4d, 0xe3, 0x21,
+	0xfc, 0x32, 0x64, 0xed, 0x9d, 0x56, 0xc7, 0xac, 0xcf, 0xb1, 0x0b, 0x56, 0x77, 0x5a, 0x2c, 0xc1,
+	0x9c, 0x1e, 0xc4, 0xcb, 0xe8, 0x30, 0xe7, 0x46, 0x2b, 0xfe, 0x43, 0xbc, 0x00, 0x79, 0x5e, 0x08,
+	0x53, 0x5c, 0xe9, 0xb9, 0x23, 0x45, 0x54, 0x53, 0x8a, 0x8f, 0x14, 0xbe, 0x38, 0x8b, 0x00, 0x0d,
+	0x62, 0xd9, 0x55, 0x93, 0xe8, 0x96, 0x77, 0x92, 0xd6, 0xec, 0x58, 0xf5, 0x5b, 0xc3, 0x29, 0x96,
+	0x71, 0x94, 0xe7, 0xc4, 0x2d, 0xd0, 0x4a, 0x1f, 0x1a, 0x8e, 0x38, 0x01, 0xc9, 0x30, 0x6a, 0x52,
+	0x62, 0x19, 0xba, 0x48, 0x26, 0x5c, 0xa8, 0x98, 0xaf, 0x60, 0xb1, 0x83, 0x5e, 0x87, 0x23, 0x4d,
+	0x6a, 0x59, 0xa4, 0x4e, 0x45, 0x86, 0xcf, 0xbb, 0x8e, 0x74, 0x64, 0xd5, 0x5b, 0xc2, 0x9d, 0x3d,
+	0xf9, 0xaf, 0x14, 0xcc, 0xc7, 0xc8, 0x6f, 0x45, 0xb3, 0x6c, 0x74, 0xbb, 0xcf, 0x62, 0x95, 0x21,
+	0xa3, 0x83, 0x66, 0x79, 0xf6, 0x3a, 0x2d, 0x1e, 0x37, 0xd6, 0x59, 0x09, 0x58, 0xeb, 0xa7, 0x90,
+	0xd3, 0x6c, 0xda, 0x64, 0xda, 0xc8, 0x2c, 0xe6, 0x97, 0x97, 0x77, 0x6f, 0x56, 0xe5, 0x49, 0x01,
+	0x9f, 0xbb, 0xc2, 0x80, 0xb0, 0x87, 0xc7, 0x4a, 0xc3, 0xf9, 0x04, 0x03, 0x47, 0x26, 0x4c, 0xf1,
+	0x2f, 0x2f, 0xe4, 0x62, 0x7a, 0x47, 0x3c, 0x2e, 0xc9, 0x61, 0x12, 0x92, 0xb2, 0x17, 0xfd, 0xd6,
+	0x43, 0x88, 0xb8, 0xe7, 0x04, 0xb4, 0x04, 0xf9, 0xa6, 0xa6, 0x63, 0xda, 0x6a, 0x68, 0x2a, 0xb1,
+	0x44, 0x4d, 0xc3, 0x53, 0xcc, 0x6a, 0x77, 0x19, 0x07, 0x69, 0x38, 0x0b, 0xb9, 0xe7, 0xb3, 0x64,
+	0x02, 0x2c, 0xdd, 0x65, 0x1c, 0xa4, 0x41, 0x77, 0xa1, 0xe8, 0xe5, 0x8c, 0xca, 0xda, 0x8d, 0x40,
+	0x09, 0xb4, 0x46, 0x4d, 0x95, 0xea, 0x36, 0x33, 0x87, 0x2c, 0x47, 0x91, 0x5d, 0x47, 0x2a, 0x56,
+	0x13, 0x29, 0xf1, 0x00, 0x24, 0xf9, 0xf7, 0x0c, 0x9c, 0x4a, 0x74, 0x77, 0xf4, 0x01, 0x20, 0x63,
+	0xc3, 0xa2, 0xe6, 0x36, 0xad, 0x7d, 0xe8, 0x55, 0xef, 0xac, 0xf0, 0x60, 0xb2, 0xce, 0x78, 0x39,
+	0xef, 0x5a, 0xdf, 0x2e, 0x8e, 0xe0, 0x40, 0x2a, 0x4c, 0x32, 0x3f, 0xf0, 0x24, 0xac, 0x89, 0xfa,
+	0x66, 0x77, 0x4e, 0x76, 0xcc, 0x75, 0xa4, 0xc9, 0x95, 0x20, 0x08, 0x0e, 0x63, 0xa2, 0x77, 0xe1,
+	0xa8, 0x08, 0xe8, 0x3d, 0x12, 0x9f, 0x71, 0x1d, 0xe9, 0x68, 0x25, 0xbc, 0x85, 0x7b, 0x69, 0x19,
+	0x7b, 0x8d, 0x5a, 0x9a, 0x49, 0x6b, 0x3e, 0x7b, 0xb6, 0xcb, 0x7e, 0x39, 0xbc, 0x85, 0x7b, 0x69,
+	0x51, 0x13, 0x24, 0x81, 0x18, 0xab, 0xb9, 0x1c, 0x87, 0x7b, 0xcd, 0x75, 0x24, 0xa9, 0x92, 0x4c,
+	0x8a, 0x07, 0x61, 0xc9, 0xdf, 0x65, 0x41, 0xd4, 0x05, 0xdc, 0x21, 0xce, 0x85, 0xc2, 0xeb, 0xc9,
+	0x40, 0x78, 0x9d, 0x0e, 0x16, 0x7e, 0x81, 0x50, 0x7a, 0x1d, 0x46, 0x0d, 0xee, 0x05, 0x42, 0x17,
+	0x67, 0x13, 0x5c, 0xc7, 0x4f, 0x55, 0x3e, 0x90, 0x17, 0xb3, 0x84, 0x1b, 0x09, 0x20, 0x74, 0x05,
+	0xb2, 0x2d, 0xa3, 0xd6, 0x49, 0x32, 0x67, 0x12, 0x00, 0xd7, 0x8c, 0x9a, 0x15, 0x82, 0xe3, 0x19,
+	0x8b, 0xad, 0x62, 0x0e, 0x81, 0x3e, 0x87, 0xb1, 0x4e, 0x22, 0x17, 0x59, 0xbf, 0x94, 0x00, 0x17,
+	0xd5, 0x3c, 0x96, 0x27, 0x58, 0xd0, 0xea, 0xec, 0x60, 0x1f, 0x0e, 0x3d, 0x80, 0x63, 0x6a, 0x6f,
+	0x3f, 0x54, 0x38, 0x32, 0x30, 0x2f, 0x26, 0x76, 0xaa, 0xe5, 0xff, 0xb9, 0x8e, 0x74, 0xac, 0x8f,
+	0x04, 0xf7, 0x9f, 0xc4, 0x5e, 0x46, 0x45, 0xf5, 0xc7, 0x0d, 0x22, 0xf9, 0x65, 0x51, 0xd5, 0xbb,
+	0xf7, 0xb2, 0xce, 0x0e, 0xf6, 0xe1, 0xe4, 0x1f, 0xb2, 0x30, 0x11, 0xaa, 0x28, 0x0f, 0xd1, 0x2a,
+	0x02, 0xe5, 0xc1, 0x41, 0x58, 0x85, 0x07, 0x77, 0xa0, 0x56, 0xe1, 0x41, 0x1e, 0x92, 0x55, 0x78,
+	0x87, 0x1d, 0x92, 0x55, 0x04, 0x5e, 0x16, 0x61, 0x15, 0x7f, 0x64, 0x00, 0xf5, 0x3b, 0x30, 0xba,
+	0x05, 0xa3, 0x5e, 0x7a, 0xd8, 0x67, 0xea, 0xe4, 0x2a, 0x17, 0x59, 0x52, 0x20, 0xf6, 0x74, 0x32,
+	0xe9, 0x81, 0x9d, 0x0c, 0x3d, 0x88, 0x6e, 0x6f, 0x46, 0x54, 0x12, 0xf1, 0x1d, 0xdf, 0x97, 0x30,
+	0x66, 0x75, 0x5a, 0xa5, 0xec, 0xde, 0x5b, 0x25, 0x2e, 0x68, 0xbf, 0x49, 0xf2, 0x21, 0x51, 0x0d,
+	0x26, 0x48, 0xb0, 0x5b, 0xc9, 0xed, 0xe9, 0x19, 0xd3, 0xac, 0x35, 0x0a, 0xb5, 0x29, 0x21, 0x54,
+	0xf9, 0xcf, 0x5e, 0x75, 0x7a, 0xae, 0xfe, 0x32, 0xa9, 0xf3, 0xf0, 0xfa, 0xc4, 0xff, 0x84, 0x46,
+	0x7f, 0x4a, 0xc3, 0x74, 0x6f, 0x42, 0xdc, 0xf5, 0x30, 0xe0, 0x7e, 0xe4, 0x34, 0x23, 0xbd, 0xa7,
+	0x0b, 0xfb, 0xfd, 0xcc, 0x90, 0xf3, 0xc8, 0xa0, 0x16, 0x32, 0x07, 0xae, 0x05, 0xf9, 0xe7, 0xb0,
+	0x7c, 0xf6, 0x36, 0x2c, 0x89, 0x19, 0x21, 0xa6, 0x0f, 0x69, 0x84, 0xf8, 0x82, 0x45, 0xf4, 0x4b,
+	0x1a, 0x8e, 0xbf, 0x9a, 0xa0, 0x0f, 0x3f, 0x83, 0xfb, 0xad, 0x5f, 0x5e, 0xaf, 0x66, 0xe1, 0x43,
+	0x8d, 0xc7, 0x9e, 0xa5, 0x20, 0xc7, 0x5b, 0xae, 0x43, 0x18, 0x86, 0x95, 0x43, 0xc3, 0xb0, 0xd3,
+	0x09, 0x19, 0x8d, 0xdf, 0x28, 0x72, 0xf4, 0xf5, 0x71, 0xcf, 0xe8, 0xeb, 0x8d, 0x81, 0x28, 0xf1,
+	0x83, 0xae, 0x77, 0x60, 0xdc, 0x3f, 0x08, 0x2d, 0xb2, 0x5a, 0x54, 0xf4, 0x89, 0x29, 0xae, 0x53,
+	0x51, 0x5a, 0x8a, 0x06, 0xd1, 0xdf, 0x95, 0x09, 0xe4, 0x03, 0xc8, 0xc3, 0x33, 0x32, 0x4a, 0x2b,
+	0x38, 0xda, 0x1d, 0x8f, 0xf3, 0xff, 0xf2, 0x7b, 0x0f, 0x9f, 0x14, 0x47, 0x1e, 0x3d, 0x29, 0x8e,
+	0x3c, 0x7e, 0x52, 0x1c, 0xf9, 0xda, 0x2d, 0xa6, 0x1e, 0xba, 0xc5, 0xd4, 0x23, 0xb7, 0x98, 0x7a,
+	0xec, 0x16, 0x53, 0x7f, 0xbb, 0xc5, 0xd4, 0xb7, 0x4f, 0x8b, 0x23, 0xb7, 0x66, 0x63, 0xff, 0xde,
+	0xfc, 0x37, 0x00, 0x00, 0xff, 0xff, 0xce, 0x7d, 0x69, 0xbb, 0xfa, 0x1c, 0x00, 0x00,
 }
 
 func (m *ContainerResourceMetricSource) Marshal() (dAtA []byte, err error) {
@@ -787,11 +786,13 @@ func (m *ContainerResourceMetricSource) MarshalToSizedBuffer(dAtA []byte) (int, 
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Container)
-	copy(dAtA[i:], m.Container)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Container)))
-	i--
-	dAtA[i] = 0x2a
+	if m.Container != nil {
+		i -= len(*m.Container)
+		copy(dAtA[i:], *m.Container)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Container)))
+		i--
+		dAtA[i] = 0x2a
+	}
 	if m.TargetAverageValue != nil {
 		{
 			size, err := m.TargetAverageValue.MarshalToSizedBuffer(dAtA[:i])
@@ -837,11 +838,13 @@ func (m *ContainerResourceMetricStatus) MarshalToSizedBuffer(dAtA []byte) (int, 
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Container)
-	copy(dAtA[i:], m.Container)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Container)))
-	i--
-	dAtA[i] = 0x22
+	if m.Container != nil {
+		i -= len(*m.Container)
+		copy(dAtA[i:], *m.Container)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Container)))
+		i--
+		dAtA[i] = 0x22
+	}
 	{
 		size, err := m.CurrentAverageValue.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
@@ -885,21 +888,27 @@ func (m *CrossVersionObjectReference) MarshalToSizedBuffer(dAtA []byte) (int, er
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.APIVersion)
-	copy(dAtA[i:], m.APIVersion)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.APIVersion)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.Name)
-	copy(dAtA[i:], m.Name)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Name)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Kind)
-	copy(dAtA[i:], m.Kind)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Kind)))
-	i--
-	dAtA[i] = 0xa
+	if m.APIVersion != nil {
+		i -= len(*m.APIVersion)
+		copy(dAtA[i:], *m.APIVersion)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.APIVersion)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Name != nil {
+		i -= len(*m.Name)
+		copy(dAtA[i:], *m.Name)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Name)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Kind != nil {
+		i -= len(*m.Kind)
+		copy(dAtA[i:], *m.Kind)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Kind)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -959,11 +968,13 @@ func (m *ExternalMetricSource) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	i -= len(m.MetricName)
-	copy(dAtA[i:], m.MetricName)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.MetricName)))
-	i--
-	dAtA[i] = 0xa
+	if m.MetricName != nil {
+		i -= len(*m.MetricName)
+		copy(dAtA[i:], *m.MetricName)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.MetricName)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1021,11 +1032,13 @@ func (m *ExternalMetricStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	i -= len(m.MetricName)
-	copy(dAtA[i:], m.MetricName)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.MetricName)))
-	i--
-	dAtA[i] = 0xa
+	if m.MetricName != nil {
+		i -= len(*m.MetricName)
+		copy(dAtA[i:], *m.MetricName)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.MetricName)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1049,26 +1062,30 @@ func (m *HorizontalPodAutoscaler) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	_ = i
 	var l int
 	_ = l
-	{
-		size, err := m.Status.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
+	if m.Status != nil {
+		{
+			size, err := m.Status.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
 		}
-		i -= size
-		i = encodeVarintGenerated(dAtA, i, uint64(size))
+		i--
+		dAtA[i] = 0x1a
 	}
-	i--
-	dAtA[i] = 0x1a
-	{
-		size, err := m.Spec.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
+	if m.Spec != nil {
+		{
+			size, err := m.Spec.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
 		}
-		i -= size
-		i = encodeVarintGenerated(dAtA, i, uint64(size))
+		i--
+		dAtA[i] = 0x12
 	}
-	i--
-	dAtA[i] = 0x12
 	{
 		size, err := m.ObjectMeta.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
@@ -1102,16 +1119,20 @@ func (m *HorizontalPodAutoscalerCondition) MarshalToSizedBuffer(dAtA []byte) (in
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Message)
-	copy(dAtA[i:], m.Message)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Message)))
-	i--
-	dAtA[i] = 0x2a
-	i -= len(m.Reason)
-	copy(dAtA[i:], m.Reason)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Reason)))
-	i--
-	dAtA[i] = 0x22
+	if m.Message != nil {
+		i -= len(*m.Message)
+		copy(dAtA[i:], *m.Message)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Message)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.Reason != nil {
+		i -= len(*m.Reason)
+		copy(dAtA[i:], *m.Reason)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Reason)))
+		i--
+		dAtA[i] = 0x22
+	}
 	{
 		size, err := m.LastTransitionTime.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
@@ -1127,11 +1148,13 @@ func (m *HorizontalPodAutoscalerCondition) MarshalToSizedBuffer(dAtA []byte) (in
 	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Status)))
 	i--
 	dAtA[i] = 0x12
-	i -= len(m.Type)
-	copy(dAtA[i:], m.Type)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Type)))
-	i--
-	dAtA[i] = 0xa
+	if m.Type != nil {
+		i -= len(*m.Type)
+		copy(dAtA[i:], *m.Type)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Type)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1207,24 +1230,28 @@ func (m *HorizontalPodAutoscalerSpec) MarshalToSizedBuffer(dAtA []byte) (int, er
 		i--
 		dAtA[i] = 0x20
 	}
-	i = encodeVarintGenerated(dAtA, i, uint64(m.MaxReplicas))
-	i--
-	dAtA[i] = 0x18
+	if m.MaxReplicas != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.MaxReplicas))
+		i--
+		dAtA[i] = 0x18
+	}
 	if m.MinReplicas != nil {
 		i = encodeVarintGenerated(dAtA, i, uint64(*m.MinReplicas))
 		i--
 		dAtA[i] = 0x10
 	}
-	{
-		size, err := m.ScaleTargetRef.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
+	if m.ScaleTargetRef != nil {
+		{
+			size, err := m.ScaleTargetRef.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
 		}
-		i -= size
-		i = encodeVarintGenerated(dAtA, i, uint64(size))
+		i--
+		dAtA[i] = 0xa
 	}
-	i--
-	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
@@ -1253,12 +1280,16 @@ func (m *HorizontalPodAutoscalerStatus) MarshalToSizedBuffer(dAtA []byte) (int, 
 		i--
 		dAtA[i] = 0x28
 	}
-	i = encodeVarintGenerated(dAtA, i, uint64(m.DesiredReplicas))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintGenerated(dAtA, i, uint64(m.CurrentReplicas))
-	i--
-	dAtA[i] = 0x18
+	if m.DesiredReplicas != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.DesiredReplicas))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.CurrentReplicas != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.CurrentReplicas))
+		i--
+		dAtA[i] = 0x18
+	}
 	if m.LastScaleTime != nil {
 		{
 			size, err := m.LastScaleTime.MarshalToSizedBuffer(dAtA[:i])
@@ -1359,11 +1390,13 @@ func (m *MetricSpec) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	i -= len(m.Type)
-	copy(dAtA[i:], m.Type)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Type)))
-	i--
-	dAtA[i] = 0xa
+	if m.Type != nil {
+		i -= len(*m.Type)
+		copy(dAtA[i:], *m.Type)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Type)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1447,11 +1480,13 @@ func (m *MetricStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	i -= len(m.Type)
-	copy(dAtA[i:], m.Type)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Type)))
-	i--
-	dAtA[i] = 0xa
+	if m.Type != nil {
+		i -= len(*m.Type)
+		copy(dAtA[i:], *m.Type)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Type)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1509,21 +1544,25 @@ func (m *ObjectMetricSource) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	}
 	i--
 	dAtA[i] = 0x1a
-	i -= len(m.MetricName)
-	copy(dAtA[i:], m.MetricName)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.MetricName)))
-	i--
-	dAtA[i] = 0x12
-	{
-		size, err := m.Target.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
-		}
-		i -= size
-		i = encodeVarintGenerated(dAtA, i, uint64(size))
+	if m.MetricName != nil {
+		i -= len(*m.MetricName)
+		copy(dAtA[i:], *m.MetricName)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.MetricName)))
+		i--
+		dAtA[i] = 0x12
 	}
-	i--
-	dAtA[i] = 0xa
+	if m.Target != nil {
+		{
+			size, err := m.Target.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1581,21 +1620,25 @@ func (m *ObjectMetricStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	}
 	i--
 	dAtA[i] = 0x1a
-	i -= len(m.MetricName)
-	copy(dAtA[i:], m.MetricName)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.MetricName)))
-	i--
-	dAtA[i] = 0x12
-	{
-		size, err := m.Target.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
-		}
-		i -= size
-		i = encodeVarintGenerated(dAtA, i, uint64(size))
+	if m.MetricName != nil {
+		i -= len(*m.MetricName)
+		copy(dAtA[i:], *m.MetricName)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.MetricName)))
+		i--
+		dAtA[i] = 0x12
 	}
-	i--
-	dAtA[i] = 0xa
+	if m.Target != nil {
+		{
+			size, err := m.Target.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1641,11 +1684,13 @@ func (m *PodsMetricSource) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	}
 	i--
 	dAtA[i] = 0x12
-	i -= len(m.MetricName)
-	copy(dAtA[i:], m.MetricName)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.MetricName)))
-	i--
-	dAtA[i] = 0xa
+	if m.MetricName != nil {
+		i -= len(*m.MetricName)
+		copy(dAtA[i:], *m.MetricName)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.MetricName)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1691,11 +1736,13 @@ func (m *PodsMetricStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	}
 	i--
 	dAtA[i] = 0x12
-	i -= len(m.MetricName)
-	copy(dAtA[i:], m.MetricName)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.MetricName)))
-	i--
-	dAtA[i] = 0xa
+	if m.MetricName != nil {
+		i -= len(*m.MetricName)
+		copy(dAtA[i:], *m.MetricName)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.MetricName)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1807,26 +1854,30 @@ func (m *Scale) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
-	{
-		size, err := m.Status.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
+	if m.Status != nil {
+		{
+			size, err := m.Status.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
 		}
-		i -= size
-		i = encodeVarintGenerated(dAtA, i, uint64(size))
+		i--
+		dAtA[i] = 0x1a
 	}
-	i--
-	dAtA[i] = 0x1a
-	{
-		size, err := m.Spec.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
+	if m.Spec != nil {
+		{
+			size, err := m.Spec.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintGenerated(dAtA, i, uint64(size))
 		}
-		i -= size
-		i = encodeVarintGenerated(dAtA, i, uint64(size))
+		i--
+		dAtA[i] = 0x12
 	}
-	i--
-	dAtA[i] = 0x12
 	{
 		size, err := m.ObjectMeta.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
@@ -1860,9 +1911,11 @@ func (m *ScaleSpec) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintGenerated(dAtA, i, uint64(m.Replicas))
-	i--
-	dAtA[i] = 0x8
+	if m.Replicas != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.Replicas))
+		i--
+		dAtA[i] = 0x8
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1886,14 +1939,18 @@ func (m *ScaleStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Selector)
-	copy(dAtA[i:], m.Selector)
-	i = encodeVarintGenerated(dAtA, i, uint64(len(m.Selector)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintGenerated(dAtA, i, uint64(m.Replicas))
-	i--
-	dAtA[i] = 0x8
+	if m.Selector != nil {
+		i -= len(*m.Selector)
+		copy(dAtA[i:], *m.Selector)
+		i = encodeVarintGenerated(dAtA, i, uint64(len(*m.Selector)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Replicas != nil {
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.Replicas))
+		i--
+		dAtA[i] = 0x8
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1923,8 +1980,10 @@ func (m *ContainerResourceMetricSource) Size() (n int) {
 		l = m.TargetAverageValue.Size()
 		n += 1 + l + sovGenerated(uint64(l))
 	}
-	l = len(m.Container)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Container != nil {
+		l = len(*m.Container)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	return n
 }
 
@@ -1941,8 +2000,10 @@ func (m *ContainerResourceMetricStatus) Size() (n int) {
 	}
 	l = m.CurrentAverageValue.Size()
 	n += 1 + l + sovGenerated(uint64(l))
-	l = len(m.Container)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Container != nil {
+		l = len(*m.Container)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	return n
 }
 
@@ -1952,12 +2013,18 @@ func (m *CrossVersionObjectReference) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.Kind)
-	n += 1 + l + sovGenerated(uint64(l))
-	l = len(m.Name)
-	n += 1 + l + sovGenerated(uint64(l))
-	l = len(m.APIVersion)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Kind != nil {
+		l = len(*m.Kind)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.Name != nil {
+		l = len(*m.Name)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.APIVersion != nil {
+		l = len(*m.APIVersion)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	return n
 }
 
@@ -1967,8 +2034,10 @@ func (m *ExternalMetricSource) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.MetricName)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.MetricName != nil {
+		l = len(*m.MetricName)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	if m.MetricSelector != nil {
 		l = m.MetricSelector.Size()
 		n += 1 + l + sovGenerated(uint64(l))
@@ -1990,8 +2059,10 @@ func (m *ExternalMetricStatus) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.MetricName)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.MetricName != nil {
+		l = len(*m.MetricName)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	if m.MetricSelector != nil {
 		l = m.MetricSelector.Size()
 		n += 1 + l + sovGenerated(uint64(l))
@@ -2013,10 +2084,14 @@ func (m *HorizontalPodAutoscaler) Size() (n int) {
 	_ = l
 	l = m.ObjectMeta.Size()
 	n += 1 + l + sovGenerated(uint64(l))
-	l = m.Spec.Size()
-	n += 1 + l + sovGenerated(uint64(l))
-	l = m.Status.Size()
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Spec != nil {
+		l = m.Spec.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.Status != nil {
+		l = m.Status.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	return n
 }
 
@@ -2026,16 +2101,22 @@ func (m *HorizontalPodAutoscalerCondition) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.Type)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Type != nil {
+		l = len(*m.Type)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	l = len(m.Status)
 	n += 1 + l + sovGenerated(uint64(l))
 	l = m.LastTransitionTime.Size()
 	n += 1 + l + sovGenerated(uint64(l))
-	l = len(m.Reason)
-	n += 1 + l + sovGenerated(uint64(l))
-	l = len(m.Message)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Reason != nil {
+		l = len(*m.Reason)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.Message != nil {
+		l = len(*m.Message)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	return n
 }
 
@@ -2062,12 +2143,16 @@ func (m *HorizontalPodAutoscalerSpec) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = m.ScaleTargetRef.Size()
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.ScaleTargetRef != nil {
+		l = m.ScaleTargetRef.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	if m.MinReplicas != nil {
 		n += 1 + sovGenerated(uint64(*m.MinReplicas))
 	}
-	n += 1 + sovGenerated(uint64(m.MaxReplicas))
+	if m.MaxReplicas != nil {
+		n += 1 + sovGenerated(uint64(*m.MaxReplicas))
+	}
 	if m.TargetCPUUtilizationPercentage != nil {
 		n += 1 + sovGenerated(uint64(*m.TargetCPUUtilizationPercentage))
 	}
@@ -2087,8 +2172,12 @@ func (m *HorizontalPodAutoscalerStatus) Size() (n int) {
 		l = m.LastScaleTime.Size()
 		n += 1 + l + sovGenerated(uint64(l))
 	}
-	n += 1 + sovGenerated(uint64(m.CurrentReplicas))
-	n += 1 + sovGenerated(uint64(m.DesiredReplicas))
+	if m.CurrentReplicas != nil {
+		n += 1 + sovGenerated(uint64(*m.CurrentReplicas))
+	}
+	if m.DesiredReplicas != nil {
+		n += 1 + sovGenerated(uint64(*m.DesiredReplicas))
+	}
 	if m.CurrentCPUUtilizationPercentage != nil {
 		n += 1 + sovGenerated(uint64(*m.CurrentCPUUtilizationPercentage))
 	}
@@ -2101,8 +2190,10 @@ func (m *MetricSpec) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.Type)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Type != nil {
+		l = len(*m.Type)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	if m.Object != nil {
 		l = m.Object.Size()
 		n += 1 + l + sovGenerated(uint64(l))
@@ -2132,8 +2223,10 @@ func (m *MetricStatus) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.Type)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Type != nil {
+		l = len(*m.Type)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	if m.Object != nil {
 		l = m.Object.Size()
 		n += 1 + l + sovGenerated(uint64(l))
@@ -2163,10 +2256,14 @@ func (m *ObjectMetricSource) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = m.Target.Size()
-	n += 1 + l + sovGenerated(uint64(l))
-	l = len(m.MetricName)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Target != nil {
+		l = m.Target.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.MetricName != nil {
+		l = len(*m.MetricName)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	l = m.TargetValue.Size()
 	n += 1 + l + sovGenerated(uint64(l))
 	if m.Selector != nil {
@@ -2186,10 +2283,14 @@ func (m *ObjectMetricStatus) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = m.Target.Size()
-	n += 1 + l + sovGenerated(uint64(l))
-	l = len(m.MetricName)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Target != nil {
+		l = m.Target.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.MetricName != nil {
+		l = len(*m.MetricName)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	l = m.CurrentValue.Size()
 	n += 1 + l + sovGenerated(uint64(l))
 	if m.Selector != nil {
@@ -2209,8 +2310,10 @@ func (m *PodsMetricSource) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.MetricName)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.MetricName != nil {
+		l = len(*m.MetricName)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	l = m.TargetAverageValue.Size()
 	n += 1 + l + sovGenerated(uint64(l))
 	if m.Selector != nil {
@@ -2226,8 +2329,10 @@ func (m *PodsMetricStatus) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.MetricName)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.MetricName != nil {
+		l = len(*m.MetricName)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	l = m.CurrentAverageValue.Size()
 	n += 1 + l + sovGenerated(uint64(l))
 	if m.Selector != nil {
@@ -2279,10 +2384,14 @@ func (m *Scale) Size() (n int) {
 	_ = l
 	l = m.ObjectMeta.Size()
 	n += 1 + l + sovGenerated(uint64(l))
-	l = m.Spec.Size()
-	n += 1 + l + sovGenerated(uint64(l))
-	l = m.Status.Size()
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Spec != nil {
+		l = m.Spec.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
+	if m.Status != nil {
+		l = m.Status.Size()
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	return n
 }
 
@@ -2292,7 +2401,9 @@ func (m *ScaleSpec) Size() (n int) {
 	}
 	var l int
 	_ = l
-	n += 1 + sovGenerated(uint64(m.Replicas))
+	if m.Replicas != nil {
+		n += 1 + sovGenerated(uint64(*m.Replicas))
+	}
 	return n
 }
 
@@ -2302,9 +2413,13 @@ func (m *ScaleStatus) Size() (n int) {
 	}
 	var l int
 	_ = l
-	n += 1 + sovGenerated(uint64(m.Replicas))
-	l = len(m.Selector)
-	n += 1 + l + sovGenerated(uint64(l))
+	if m.Replicas != nil {
+		n += 1 + sovGenerated(uint64(*m.Replicas))
+	}
+	if m.Selector != nil {
+		l = len(*m.Selector)
+		n += 1 + l + sovGenerated(uint64(l))
+	}
 	return n
 }
 
@@ -2322,7 +2437,7 @@ func (this *ContainerResourceMetricSource) String() string {
 		`Name:` + fmt.Sprintf("%v", this.Name) + `,`,
 		`TargetAverageUtilization:` + valueToStringGenerated(this.TargetAverageUtilization) + `,`,
 		`TargetAverageValue:` + strings.Replace(fmt.Sprintf("%v", this.TargetAverageValue), "Quantity", "resource.Quantity", 1) + `,`,
-		`Container:` + fmt.Sprintf("%v", this.Container) + `,`,
+		`Container:` + valueToStringGenerated(this.Container) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2335,7 +2450,7 @@ func (this *ContainerResourceMetricStatus) String() string {
 		`Name:` + fmt.Sprintf("%v", this.Name) + `,`,
 		`CurrentAverageUtilization:` + valueToStringGenerated(this.CurrentAverageUtilization) + `,`,
 		`CurrentAverageValue:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.CurrentAverageValue), "Quantity", "resource.Quantity", 1), `&`, ``, 1) + `,`,
-		`Container:` + fmt.Sprintf("%v", this.Container) + `,`,
+		`Container:` + valueToStringGenerated(this.Container) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2345,9 +2460,9 @@ func (this *CrossVersionObjectReference) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&CrossVersionObjectReference{`,
-		`Kind:` + fmt.Sprintf("%v", this.Kind) + `,`,
-		`Name:` + fmt.Sprintf("%v", this.Name) + `,`,
-		`APIVersion:` + fmt.Sprintf("%v", this.APIVersion) + `,`,
+		`Kind:` + valueToStringGenerated(this.Kind) + `,`,
+		`Name:` + valueToStringGenerated(this.Name) + `,`,
+		`APIVersion:` + valueToStringGenerated(this.APIVersion) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2357,7 +2472,7 @@ func (this *ExternalMetricSource) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&ExternalMetricSource{`,
-		`MetricName:` + fmt.Sprintf("%v", this.MetricName) + `,`,
+		`MetricName:` + valueToStringGenerated(this.MetricName) + `,`,
 		`MetricSelector:` + strings.Replace(fmt.Sprintf("%v", this.MetricSelector), "LabelSelector", "v1.LabelSelector", 1) + `,`,
 		`TargetValue:` + strings.Replace(fmt.Sprintf("%v", this.TargetValue), "Quantity", "resource.Quantity", 1) + `,`,
 		`TargetAverageValue:` + strings.Replace(fmt.Sprintf("%v", this.TargetAverageValue), "Quantity", "resource.Quantity", 1) + `,`,
@@ -2370,7 +2485,7 @@ func (this *ExternalMetricStatus) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&ExternalMetricStatus{`,
-		`MetricName:` + fmt.Sprintf("%v", this.MetricName) + `,`,
+		`MetricName:` + valueToStringGenerated(this.MetricName) + `,`,
 		`MetricSelector:` + strings.Replace(fmt.Sprintf("%v", this.MetricSelector), "LabelSelector", "v1.LabelSelector", 1) + `,`,
 		`CurrentValue:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.CurrentValue), "Quantity", "resource.Quantity", 1), `&`, ``, 1) + `,`,
 		`CurrentAverageValue:` + strings.Replace(fmt.Sprintf("%v", this.CurrentAverageValue), "Quantity", "resource.Quantity", 1) + `,`,
@@ -2384,8 +2499,8 @@ func (this *HorizontalPodAutoscaler) String() string {
 	}
 	s := strings.Join([]string{`&HorizontalPodAutoscaler{`,
 		`ObjectMeta:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.ObjectMeta), "ObjectMeta", "v1.ObjectMeta", 1), `&`, ``, 1) + `,`,
-		`Spec:` + strings.Replace(strings.Replace(this.Spec.String(), "HorizontalPodAutoscalerSpec", "HorizontalPodAutoscalerSpec", 1), `&`, ``, 1) + `,`,
-		`Status:` + strings.Replace(strings.Replace(this.Status.String(), "HorizontalPodAutoscalerStatus", "HorizontalPodAutoscalerStatus", 1), `&`, ``, 1) + `,`,
+		`Spec:` + strings.Replace(this.Spec.String(), "HorizontalPodAutoscalerSpec", "HorizontalPodAutoscalerSpec", 1) + `,`,
+		`Status:` + strings.Replace(this.Status.String(), "HorizontalPodAutoscalerStatus", "HorizontalPodAutoscalerStatus", 1) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2395,11 +2510,11 @@ func (this *HorizontalPodAutoscalerCondition) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&HorizontalPodAutoscalerCondition{`,
-		`Type:` + fmt.Sprintf("%v", this.Type) + `,`,
+		`Type:` + valueToStringGenerated(this.Type) + `,`,
 		`Status:` + fmt.Sprintf("%v", this.Status) + `,`,
 		`LastTransitionTime:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.LastTransitionTime), "Time", "v1.Time", 1), `&`, ``, 1) + `,`,
-		`Reason:` + fmt.Sprintf("%v", this.Reason) + `,`,
-		`Message:` + fmt.Sprintf("%v", this.Message) + `,`,
+		`Reason:` + valueToStringGenerated(this.Reason) + `,`,
+		`Message:` + valueToStringGenerated(this.Message) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2425,9 +2540,9 @@ func (this *HorizontalPodAutoscalerSpec) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&HorizontalPodAutoscalerSpec{`,
-		`ScaleTargetRef:` + strings.Replace(strings.Replace(this.ScaleTargetRef.String(), "CrossVersionObjectReference", "CrossVersionObjectReference", 1), `&`, ``, 1) + `,`,
+		`ScaleTargetRef:` + strings.Replace(this.ScaleTargetRef.String(), "CrossVersionObjectReference", "CrossVersionObjectReference", 1) + `,`,
 		`MinReplicas:` + valueToStringGenerated(this.MinReplicas) + `,`,
-		`MaxReplicas:` + fmt.Sprintf("%v", this.MaxReplicas) + `,`,
+		`MaxReplicas:` + valueToStringGenerated(this.MaxReplicas) + `,`,
 		`TargetCPUUtilizationPercentage:` + valueToStringGenerated(this.TargetCPUUtilizationPercentage) + `,`,
 		`}`,
 	}, "")
@@ -2440,8 +2555,8 @@ func (this *HorizontalPodAutoscalerStatus) String() string {
 	s := strings.Join([]string{`&HorizontalPodAutoscalerStatus{`,
 		`ObservedGeneration:` + valueToStringGenerated(this.ObservedGeneration) + `,`,
 		`LastScaleTime:` + strings.Replace(fmt.Sprintf("%v", this.LastScaleTime), "Time", "v1.Time", 1) + `,`,
-		`CurrentReplicas:` + fmt.Sprintf("%v", this.CurrentReplicas) + `,`,
-		`DesiredReplicas:` + fmt.Sprintf("%v", this.DesiredReplicas) + `,`,
+		`CurrentReplicas:` + valueToStringGenerated(this.CurrentReplicas) + `,`,
+		`DesiredReplicas:` + valueToStringGenerated(this.DesiredReplicas) + `,`,
 		`CurrentCPUUtilizationPercentage:` + valueToStringGenerated(this.CurrentCPUUtilizationPercentage) + `,`,
 		`}`,
 	}, "")
@@ -2452,7 +2567,7 @@ func (this *MetricSpec) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&MetricSpec{`,
-		`Type:` + fmt.Sprintf("%v", this.Type) + `,`,
+		`Type:` + valueToStringGenerated(this.Type) + `,`,
 		`Object:` + strings.Replace(this.Object.String(), "ObjectMetricSource", "ObjectMetricSource", 1) + `,`,
 		`Pods:` + strings.Replace(this.Pods.String(), "PodsMetricSource", "PodsMetricSource", 1) + `,`,
 		`Resource:` + strings.Replace(this.Resource.String(), "ResourceMetricSource", "ResourceMetricSource", 1) + `,`,
@@ -2467,7 +2582,7 @@ func (this *MetricStatus) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&MetricStatus{`,
-		`Type:` + fmt.Sprintf("%v", this.Type) + `,`,
+		`Type:` + valueToStringGenerated(this.Type) + `,`,
 		`Object:` + strings.Replace(this.Object.String(), "ObjectMetricStatus", "ObjectMetricStatus", 1) + `,`,
 		`Pods:` + strings.Replace(this.Pods.String(), "PodsMetricStatus", "PodsMetricStatus", 1) + `,`,
 		`Resource:` + strings.Replace(this.Resource.String(), "ResourceMetricStatus", "ResourceMetricStatus", 1) + `,`,
@@ -2482,8 +2597,8 @@ func (this *ObjectMetricSource) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&ObjectMetricSource{`,
-		`Target:` + strings.Replace(strings.Replace(this.Target.String(), "CrossVersionObjectReference", "CrossVersionObjectReference", 1), `&`, ``, 1) + `,`,
-		`MetricName:` + fmt.Sprintf("%v", this.MetricName) + `,`,
+		`Target:` + strings.Replace(this.Target.String(), "CrossVersionObjectReference", "CrossVersionObjectReference", 1) + `,`,
+		`MetricName:` + valueToStringGenerated(this.MetricName) + `,`,
 		`TargetValue:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.TargetValue), "Quantity", "resource.Quantity", 1), `&`, ``, 1) + `,`,
 		`Selector:` + strings.Replace(fmt.Sprintf("%v", this.Selector), "LabelSelector", "v1.LabelSelector", 1) + `,`,
 		`AverageValue:` + strings.Replace(fmt.Sprintf("%v", this.AverageValue), "Quantity", "resource.Quantity", 1) + `,`,
@@ -2496,8 +2611,8 @@ func (this *ObjectMetricStatus) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&ObjectMetricStatus{`,
-		`Target:` + strings.Replace(strings.Replace(this.Target.String(), "CrossVersionObjectReference", "CrossVersionObjectReference", 1), `&`, ``, 1) + `,`,
-		`MetricName:` + fmt.Sprintf("%v", this.MetricName) + `,`,
+		`Target:` + strings.Replace(this.Target.String(), "CrossVersionObjectReference", "CrossVersionObjectReference", 1) + `,`,
+		`MetricName:` + valueToStringGenerated(this.MetricName) + `,`,
 		`CurrentValue:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.CurrentValue), "Quantity", "resource.Quantity", 1), `&`, ``, 1) + `,`,
 		`Selector:` + strings.Replace(fmt.Sprintf("%v", this.Selector), "LabelSelector", "v1.LabelSelector", 1) + `,`,
 		`AverageValue:` + strings.Replace(fmt.Sprintf("%v", this.AverageValue), "Quantity", "resource.Quantity", 1) + `,`,
@@ -2510,7 +2625,7 @@ func (this *PodsMetricSource) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&PodsMetricSource{`,
-		`MetricName:` + fmt.Sprintf("%v", this.MetricName) + `,`,
+		`MetricName:` + valueToStringGenerated(this.MetricName) + `,`,
 		`TargetAverageValue:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.TargetAverageValue), "Quantity", "resource.Quantity", 1), `&`, ``, 1) + `,`,
 		`Selector:` + strings.Replace(fmt.Sprintf("%v", this.Selector), "LabelSelector", "v1.LabelSelector", 1) + `,`,
 		`}`,
@@ -2522,7 +2637,7 @@ func (this *PodsMetricStatus) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&PodsMetricStatus{`,
-		`MetricName:` + fmt.Sprintf("%v", this.MetricName) + `,`,
+		`MetricName:` + valueToStringGenerated(this.MetricName) + `,`,
 		`CurrentAverageValue:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.CurrentAverageValue), "Quantity", "resource.Quantity", 1), `&`, ``, 1) + `,`,
 		`Selector:` + strings.Replace(fmt.Sprintf("%v", this.Selector), "LabelSelector", "v1.LabelSelector", 1) + `,`,
 		`}`,
@@ -2559,8 +2674,8 @@ func (this *Scale) String() string {
 	}
 	s := strings.Join([]string{`&Scale{`,
 		`ObjectMeta:` + strings.Replace(strings.Replace(fmt.Sprintf("%v", this.ObjectMeta), "ObjectMeta", "v1.ObjectMeta", 1), `&`, ``, 1) + `,`,
-		`Spec:` + strings.Replace(strings.Replace(this.Spec.String(), "ScaleSpec", "ScaleSpec", 1), `&`, ``, 1) + `,`,
-		`Status:` + strings.Replace(strings.Replace(this.Status.String(), "ScaleStatus", "ScaleStatus", 1), `&`, ``, 1) + `,`,
+		`Spec:` + strings.Replace(this.Spec.String(), "ScaleSpec", "ScaleSpec", 1) + `,`,
+		`Status:` + strings.Replace(this.Status.String(), "ScaleStatus", "ScaleStatus", 1) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2570,7 +2685,7 @@ func (this *ScaleSpec) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&ScaleSpec{`,
-		`Replicas:` + fmt.Sprintf("%v", this.Replicas) + `,`,
+		`Replicas:` + valueToStringGenerated(this.Replicas) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2580,8 +2695,8 @@ func (this *ScaleStatus) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&ScaleStatus{`,
-		`Replicas:` + fmt.Sprintf("%v", this.Replicas) + `,`,
-		`Selector:` + fmt.Sprintf("%v", this.Selector) + `,`,
+		`Replicas:` + valueToStringGenerated(this.Replicas) + `,`,
+		`Selector:` + valueToStringGenerated(this.Selector) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -2741,7 +2856,8 @@ func (m *ContainerResourceMetricSource) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Container = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.Container = &s
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -2908,7 +3024,8 @@ func (m *ContainerResourceMetricStatus) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Container = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.Container = &s
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -2990,7 +3107,8 @@ func (m *CrossVersionObjectReference) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Kind = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.Kind = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3022,7 +3140,8 @@ func (m *CrossVersionObjectReference) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Name = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.Name = &s
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
@@ -3054,7 +3173,8 @@ func (m *CrossVersionObjectReference) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.APIVersion = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.APIVersion = &s
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -3136,7 +3256,8 @@ func (m *ExternalMetricSource) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.MetricName = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.MetricName = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3326,7 +3447,8 @@ func (m *ExternalMetricStatus) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.MetricName = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.MetricName = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3545,6 +3667,9 @@ func (m *HorizontalPodAutoscaler) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
+			if m.Spec == nil {
+				m.Spec = &HorizontalPodAutoscalerSpec{}
+			}
 			if err := m.Spec.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -3577,6 +3702,9 @@ func (m *HorizontalPodAutoscaler) Unmarshal(dAtA []byte) error {
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
+			}
+			if m.Status == nil {
+				m.Status = &HorizontalPodAutoscalerStatus{}
 			}
 			if err := m.Status.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
@@ -3662,7 +3790,8 @@ func (m *HorizontalPodAutoscalerCondition) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Type = HorizontalPodAutoscalerConditionType(dAtA[iNdEx:postIndex])
+			s := HorizontalPodAutoscalerConditionType(dAtA[iNdEx:postIndex])
+			m.Type = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3759,7 +3888,8 @@ func (m *HorizontalPodAutoscalerCondition) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Reason = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.Reason = &s
 			iNdEx = postIndex
 		case 5:
 			if wireType != 2 {
@@ -3791,7 +3921,8 @@ func (m *HorizontalPodAutoscalerCondition) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Message = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.Message = &s
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -3989,6 +4120,9 @@ func (m *HorizontalPodAutoscalerSpec) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
+			if m.ScaleTargetRef == nil {
+				m.ScaleTargetRef = &CrossVersionObjectReference{}
+			}
 			if err := m.ScaleTargetRef.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -4017,7 +4151,7 @@ func (m *HorizontalPodAutoscalerSpec) Unmarshal(dAtA []byte) error {
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field MaxReplicas", wireType)
 			}
-			m.MaxReplicas = 0
+			var v int32
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowGenerated
@@ -4027,11 +4161,12 @@ func (m *HorizontalPodAutoscalerSpec) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MaxReplicas |= int32(b&0x7F) << shift
+				v |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			m.MaxReplicas = &v
 		case 4:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field TargetCPUUtilizationPercentage", wireType)
@@ -4162,7 +4297,7 @@ func (m *HorizontalPodAutoscalerStatus) Unmarshal(dAtA []byte) error {
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field CurrentReplicas", wireType)
 			}
-			m.CurrentReplicas = 0
+			var v int32
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowGenerated
@@ -4172,16 +4307,17 @@ func (m *HorizontalPodAutoscalerStatus) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.CurrentReplicas |= int32(b&0x7F) << shift
+				v |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			m.CurrentReplicas = &v
 		case 4:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field DesiredReplicas", wireType)
 			}
-			m.DesiredReplicas = 0
+			var v int32
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowGenerated
@@ -4191,11 +4327,12 @@ func (m *HorizontalPodAutoscalerStatus) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.DesiredReplicas |= int32(b&0x7F) << shift
+				v |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			m.DesiredReplicas = &v
 		case 5:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field CurrentCPUUtilizationPercentage", wireType)
@@ -4296,7 +4433,8 @@ func (m *MetricSpec) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Type = MetricSourceType(dAtA[iNdEx:postIndex])
+			s := MetricSourceType(dAtA[iNdEx:postIndex])
+			m.Type = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -4558,7 +4696,8 @@ func (m *MetricStatus) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Type = MetricSourceType(dAtA[iNdEx:postIndex])
+			s := MetricSourceType(dAtA[iNdEx:postIndex])
+			m.Type = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -4819,6 +4958,9 @@ func (m *ObjectMetricSource) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
+			if m.Target == nil {
+				m.Target = &CrossVersionObjectReference{}
+			}
 			if err := m.Target.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -4853,7 +4995,8 @@ func (m *ObjectMetricSource) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.MetricName = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.MetricName = &s
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
@@ -5039,6 +5182,9 @@ func (m *ObjectMetricStatus) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
+			if m.Target == nil {
+				m.Target = &CrossVersionObjectReference{}
+			}
 			if err := m.Target.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -5073,7 +5219,8 @@ func (m *ObjectMetricStatus) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.MetricName = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.MetricName = &s
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
@@ -5260,7 +5407,8 @@ func (m *PodsMetricSource) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.MetricName = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.MetricName = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -5411,7 +5559,8 @@ func (m *PodsMetricStatus) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.MetricName = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.MetricName = &s
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -5867,6 +6016,9 @@ func (m *Scale) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
+			if m.Spec == nil {
+				m.Spec = &ScaleSpec{}
+			}
 			if err := m.Spec.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -5899,6 +6051,9 @@ func (m *Scale) Unmarshal(dAtA []byte) error {
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
+			}
+			if m.Status == nil {
+				m.Status = &ScaleStatus{}
 			}
 			if err := m.Status.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
@@ -5958,7 +6113,7 @@ func (m *ScaleSpec) Unmarshal(dAtA []byte) error {
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Replicas", wireType)
 			}
-			m.Replicas = 0
+			var v int32
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowGenerated
@@ -5968,11 +6123,12 @@ func (m *ScaleSpec) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Replicas |= int32(b&0x7F) << shift
+				v |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			m.Replicas = &v
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGenerated(dAtA[iNdEx:])
@@ -6027,7 +6183,7 @@ func (m *ScaleStatus) Unmarshal(dAtA []byte) error {
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Replicas", wireType)
 			}
-			m.Replicas = 0
+			var v int32
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowGenerated
@@ -6037,11 +6193,12 @@ func (m *ScaleStatus) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Replicas |= int32(b&0x7F) << shift
+				v |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			m.Replicas = &v
 		case 2:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Selector", wireType)
@@ -6072,7 +6229,8 @@ func (m *ScaleStatus) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Selector = string(dAtA[iNdEx:postIndex])
+			s := string(dAtA[iNdEx:postIndex])
+			m.Selector = &s
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex

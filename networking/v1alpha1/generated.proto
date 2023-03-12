@@ -19,14 +19,14 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.networking.v1alpha1;
+package go.linka.cloud.k8s.networking.v1alpha1;
 
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "k8s.io/api/networking/v1alpha1";
+option go_package = "go.linka.cloud/k8s/networking/v1alpha1";
 
 // IPAddress represents a single IP of a single IP Family. The object is designed to be used by APIs
 // that operate on IP addresses. The object is used by the Service core API for allocation of IP addresses.

@@ -17,7 +17,7 @@ limitations under the License.
 package v1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -40,7 +40,7 @@ type StorageClass struct {
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// provisioner indicates the type of the provisioner.
-	Provisioner string `json:"provisioner" protobuf:"bytes,2,opt,name=provisioner"`
+	Provisioner *string `json:"provisioner" protobuf:"bytes,2,opt,name=provisioner"`
 
 	// parameters holds the parameters for the provisioner that should
 	// create volumes of this storage class.
@@ -127,13 +127,13 @@ type VolumeAttachment struct {
 
 	// spec represents specification of the desired attach/detach volume behavior.
 	// Populated by the Kubernetes system.
-	Spec VolumeAttachmentSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *VolumeAttachmentSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 
 	// status represents status of the VolumeAttachment request.
 	// Populated by the entity completing the attach or detach
 	// operation, i.e. the external-attacher.
 	// +optional
-	Status VolumeAttachmentStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *VolumeAttachmentStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -155,13 +155,13 @@ type VolumeAttachmentList struct {
 type VolumeAttachmentSpec struct {
 	// attacher indicates the name of the volume driver that MUST handle this
 	// request. This is the name returned by GetPluginName().
-	Attacher string `json:"attacher" protobuf:"bytes,1,opt,name=attacher"`
+	Attacher *string `json:"attacher" protobuf:"bytes,1,opt,name=attacher"`
 
 	// source represents the volume that should be attached.
-	Source VolumeAttachmentSource `json:"source" protobuf:"bytes,2,opt,name=source"`
+	Source *VolumeAttachmentSource `json:"source" protobuf:"bytes,2,opt,name=source"`
 
 	// nodeName represents the node that the volume should be attached to.
-	NodeName string `json:"nodeName" protobuf:"bytes,3,opt,name=nodeName"`
+	NodeName *string `json:"nodeName" protobuf:"bytes,3,opt,name=nodeName"`
 }
 
 // VolumeAttachmentSource represents a volume that should be attached.
@@ -188,7 +188,7 @@ type VolumeAttachmentStatus struct {
 	// attached indicates the volume is successfully attached.
 	// This field must only be set by the entity completing the attach
 	// operation, i.e. the external-attacher.
-	Attached bool `json:"attached" protobuf:"varint,1,opt,name=attached"`
+	Attached *bool `json:"attached" protobuf:"varint,1,opt,name=attached"`
 
 	// attachmentMetadata is populated with any
 	// information returned by the attach operation, upon successful attach, that must be passed
@@ -221,7 +221,7 @@ type VolumeError struct {
 	// This string may be logged, so it should not contain sensitive
 	// information.
 	// +optional
-	Message string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
 }
 
 // +genclient
@@ -247,7 +247,7 @@ type CSIDriver struct {
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// spec represents the specification of the CSI Driver.
-	Spec CSIDriverSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *CSIDriverSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -458,7 +458,7 @@ type VolumeLifecycleMode string
 type TokenRequest struct {
 	// audience is the intended audience of the token in "TokenRequestSpec".
 	// It will default to the audiences of kube apiserver.
-	Audience string `json:"audience" protobuf:"bytes,1,opt,name=audience"`
+	Audience *string `json:"audience" protobuf:"bytes,1,opt,name=audience"`
 
 	// expirationSeconds is the duration of validity of the token in "TokenRequestSpec".
 	// It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".
@@ -509,7 +509,7 @@ type CSINode struct {
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// spec is the specification of CSINode
-	Spec CSINodeSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *CSINodeSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // CSINodeSpec holds information about the specification of all CSI drivers installed on a node
@@ -528,7 +528,7 @@ type CSINodeDriver struct {
 	// name represents the name of the CSI driver that this object refers to.
 	// This MUST be the same name returned by the CSI GetPluginName() call for
 	// that driver.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 
 	// nodeID of the node from the driver point of view.
 	// This field enables Kubernetes to communicate with storage systems that do
@@ -538,7 +538,7 @@ type CSINodeDriver struct {
 	// system to attach a volume to a specific node, it can use this field to
 	// refer to the node name using the ID that the storage system will
 	// understand, e.g. "nodeA" instead of "node1". This field is required.
-	NodeID string `json:"nodeID" protobuf:"bytes,2,opt,name=nodeID"`
+	NodeID *string `json:"nodeID" protobuf:"bytes,2,opt,name=nodeID"`
 
 	// topologyKeys is the list of keys supported by the driver.
 	// When a driver is initialized on a cluster, it provides a set of topology
@@ -643,7 +643,7 @@ type CSIStorageCapacity struct {
 	// the CSIStorageCapacity object is obsolete and should be removed by its
 	// creator.
 	// This field is immutable.
-	StorageClassName string `json:"storageClassName" protobuf:"bytes,3,name=storageClassName"`
+	StorageClassName *string `json:"storageClassName" protobuf:"bytes,3,name=storageClassName"`
 
 	// capacity is the value reported by the CSI driver in its GetCapacityResponse
 	// for a GetCapacityRequest with topology and parameters that match the

@@ -19,14 +19,14 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.admissionregistration.v1;
+package go.linka.cloud.k8s.admissionregistration.v1;
 
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "k8s.io/api/admissionregistration/v1";
+option go_package = "go.linka.cloud/k8s/admissionregistration/v1";
 
 // AuditAnnotation describes how to produce an audit annotation for an API request.
 message AuditAnnotation {

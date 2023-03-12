@@ -36,7 +36,7 @@ type Lease struct {
 	// spec contains the specification of the Lease.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec LeaseSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *LeaseSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // LeaseSpec is a specification of a Lease.
