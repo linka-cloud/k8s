@@ -14,4 +14,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package api // import "k8s.io/api"
+package k8s // import "go.linka.cloud/k8s"

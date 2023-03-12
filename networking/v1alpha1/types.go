@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -45,7 +45,7 @@ type ClusterCIDR struct {
 	// Spec is the desired state of the ClusterCIDR.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec ClusterCIDRSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ClusterCIDRSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // ClusterCIDRSpec defines the desired state of ClusterCIDR.
@@ -64,19 +64,19 @@ type ClusterCIDRSpec struct {
 	// Minimum value is 4 (16 IPs).
 	// This field is immutable.
 	// +required
-	PerNodeHostBits int32 `json:"perNodeHostBits" protobuf:"varint,2,opt,name=perNodeHostBits"`
+	PerNodeHostBits *int32 `json:"perNodeHostBits" protobuf:"varint,2,opt,name=perNodeHostBits"`
 
 	// IPv4 defines an IPv4 IP block in CIDR notation(e.g. "10.0.0.0/8").
 	// At least one of IPv4 and IPv6 must be specified.
 	// This field is immutable.
 	// +optional
-	IPv4 string `json:"ipv4" protobuf:"bytes,3,opt,name=ipv4"`
+	IPv4 *string `json:"ipv4" protobuf:"bytes,3,opt,name=ipv4"`
 
 	// IPv6 defines an IPv6 IP block in CIDR notation(e.g. "fd12:3456:789a:1::/64").
 	// At least one of IPv4 and IPv6 must be specified.
 	// This field is immutable.
 	// +optional
-	IPv6 string `json:"ipv6" protobuf:"bytes,4,opt,name=ipv6"`
+	IPv6 *string `json:"ipv6" protobuf:"bytes,4,opt,name=ipv6"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

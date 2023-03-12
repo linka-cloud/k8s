@@ -22,7 +22,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -31,7 +31,11 @@ func (in *ClusterCIDR) DeepCopyInto(out *ClusterCIDR) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
-	in.Spec.DeepCopyInto(&out.Spec)
+	if in.Spec != nil {
+		in, out := &in.Spec, &out.Spec
+		*out = new(ClusterCIDRSpec)
+		(*in).DeepCopyInto(*out)
+	}
 	return
 }
 
@@ -93,6 +97,21 @@ func (in *ClusterCIDRSpec) DeepCopyInto(out *ClusterCIDRSpec) {
 		in, out := &in.NodeSelector, &out.NodeSelector
 		*out = new(v1.NodeSelector)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.PerNodeHostBits != nil {
+		in, out := &in.PerNodeHostBits, &out.PerNodeHostBits
+		*out = new(int32)
+		**out = **in
+	}
+	if in.IPv4 != nil {
+		in, out := &in.IPv4, &out.IPv4
+		*out = new(string)
+		**out = **in
+	}
+	if in.IPv6 != nil {
+		in, out := &in.IPv6, &out.IPv6
+		*out = new(string)
+		**out = **in
 	}
 	return
 }
