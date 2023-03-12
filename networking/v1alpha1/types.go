@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 )
@@ -47,7 +47,7 @@ type ClusterCIDR struct {
 	// spec is the desired state of the ClusterCIDR.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec ClusterCIDRSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ClusterCIDRSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // ClusterCIDRSpec defines the desired state of ClusterCIDR.
@@ -66,19 +66,19 @@ type ClusterCIDRSpec struct {
 	// Minimum value is 4 (16 IPs).
 	// This field is immutable.
 	// +required
-	PerNodeHostBits int32 `json:"perNodeHostBits" protobuf:"varint,2,opt,name=perNodeHostBits"`
+	PerNodeHostBits *int32 `json:"perNodeHostBits" protobuf:"varint,2,opt,name=perNodeHostBits"`
 
 	// ipv4 defines an IPv4 IP block in CIDR notation(e.g. "10.0.0.0/8").
 	// At least one of ipv4 and ipv6 must be specified.
 	// This field is immutable.
 	// +optional
-	IPv4 string `json:"ipv4" protobuf:"bytes,3,opt,name=ipv4"`
+	IPv4 *string `json:"ipv4" protobuf:"bytes,3,opt,name=ipv4"`
 
 	// ipv6 defines an IPv6 IP block in CIDR notation(e.g. "2001:db8::/64").
 	// At least one of ipv4 and ipv6 must be specified.
 	// This field is immutable.
 	// +optional
-	IPv6 string `json:"ipv6" protobuf:"bytes,4,opt,name=ipv6"`
+	IPv6 *string `json:"ipv6" protobuf:"bytes,4,opt,name=ipv6"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -118,7 +118,7 @@ type IPAddress struct {
 	// spec is the desired state of the IPAddress.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec IPAddressSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *IPAddressSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // IPAddressSpec describe the attributes in an IP Address.
@@ -133,16 +133,16 @@ type IPAddressSpec struct {
 type ParentReference struct {
 	// Group is the group of the object being referenced.
 	// +optional
-	Group string `json:"group,omitempty" protobuf:"bytes,1,opt,name=group"`
+	Group *string `json:"group,omitempty" protobuf:"bytes,1,opt,name=group"`
 	// Resource is the resource of the object being referenced.
 	// +required
-	Resource string `json:"resource,omitempty" protobuf:"bytes,2,opt,name=resource"`
+	Resource *string `json:"resource,omitempty" protobuf:"bytes,2,opt,name=resource"`
 	// Namespace is the namespace of the object being referenced.
 	// +optional
-	Namespace string `json:"namespace,omitempty" protobuf:"bytes,3,opt,name=namespace"`
+	Namespace *string `json:"namespace,omitempty" protobuf:"bytes,3,opt,name=namespace"`
 	// Name is the name of the object being referenced.
 	// +required
-	Name string `json:"name,omitempty" protobuf:"bytes,4,opt,name=name"`
+	Name *string `json:"name,omitempty" protobuf:"bytes,4,opt,name=name"`
 	// UID is the uid of the object being referenced.
 	// +optional
 	UID types.UID `json:"uid,omitempty" protobuf:"bytes,5,opt,name=uid,casttype=k8s.io/apimachinery/pkg/types.UID"`
