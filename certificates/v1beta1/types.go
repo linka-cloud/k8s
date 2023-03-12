@@ -19,7 +19,7 @@ package v1beta1
 import (
 	"fmt"
 
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -38,11 +38,11 @@ type CertificateSigningRequest struct {
 
 	// The certificate request itself and any additional information.
 	// +optional
-	Spec CertificateSigningRequestSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *CertificateSigningRequestSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 
 	// Derived information about the request.
 	// +optional
-	Status CertificateSigningRequestStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *CertificateSigningRequestStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // This information is immutable after the request is created. Only the Request
@@ -100,11 +100,11 @@ type CertificateSigningRequestSpec struct {
 	// Information about the requesting user.
 	// See user.Info interface for details.
 	// +optional
-	Username string `json:"username,omitempty" protobuf:"bytes,2,opt,name=username"`
+	Username *string `json:"username,omitempty" protobuf:"bytes,2,opt,name=username"`
 	// UID information about the requesting user.
 	// See user.Info interface for details.
 	// +optional
-	UID string `json:"uid,omitempty" protobuf:"bytes,3,opt,name=uid"`
+	UID *string `json:"uid,omitempty" protobuf:"bytes,3,opt,name=uid"`
 	// Group information about the requesting user.
 	// See user.Info interface for details.
 	// +listType=atomic
@@ -171,7 +171,7 @@ const (
 
 type CertificateSigningRequestCondition struct {
 	// type of the condition. Known conditions include "Approved", "Denied", and "Failed".
-	Type RequestConditionType `json:"type" protobuf:"bytes,1,opt,name=type,casttype=RequestConditionType"`
+	Type *RequestConditionType `json:"type" protobuf:"bytes,1,opt,name=type,casttype=RequestConditionType"`
 	// Status of the condition, one of True, False, Unknown.
 	// Approved, Denied, and Failed conditions may not be "False" or "Unknown".
 	// Defaults to "True".
@@ -180,10 +180,10 @@ type CertificateSigningRequestCondition struct {
 	Status v1.ConditionStatus `json:"status" protobuf:"bytes,6,opt,name=status,casttype=k8s.io/api/core/v1.ConditionStatus"`
 	// brief reason for the request state
 	// +optional
-	Reason string `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
+	Reason *string `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
 	// human readable message with details about the request state
 	// +optional
-	Message string `json:"message,omitempty" protobuf:"bytes,3,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,3,opt,name=message"`
 	// timestamp for the last update to this condition
 	// +optional
 	LastUpdateTime metav1.Time `json:"lastUpdateTime,omitempty" protobuf:"bytes,4,opt,name=lastUpdateTime"`
@@ -209,7 +209,8 @@ type CertificateSigningRequestList struct {
 
 // KeyUsages specifies valid usage contexts for keys.
 // See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3
-//      https://tools.ietf.org/html/rfc5280#section-4.2.1.12
+//
+//	https://tools.ietf.org/html/rfc5280#section-4.2.1.12
 type KeyUsage string
 
 const (

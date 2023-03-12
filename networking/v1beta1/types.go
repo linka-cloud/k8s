@@ -17,7 +17,7 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
 )
@@ -42,12 +42,12 @@ type Ingress struct {
 	// Spec is the desired state of the Ingress.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec IngressSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *IngressSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 
 	// Status is the current state of the Ingress.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Status IngressStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *IngressStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -118,7 +118,7 @@ type IngressTLS struct {
 	// header field used by an IngressRule, the SNI host is used for termination
 	// and value of the Host header is used for routing.
 	// +optional
-	SecretName string `json:"secretName,omitempty" protobuf:"bytes,2,opt,name=secretName"`
+	SecretName *string `json:"secretName,omitempty" protobuf:"bytes,2,opt,name=secretName"`
 	// TODO: Consider specifying different modes of termination, protocols etc.
 }
 
@@ -156,7 +156,7 @@ type IngressRule struct {
 	// 2. If Host is a wildcard, then the request matches this rule if the http host header
 	// is to equal to the suffix (removing the first label) of the wildcard rule.
 	// +optional
-	Host string `json:"host,omitempty" protobuf:"bytes,1,opt,name=host"`
+	Host *string `json:"host,omitempty" protobuf:"bytes,1,opt,name=host"`
 	// IngressRuleValue represents a rule to route requests for this IngressRule.
 	// If unspecified, the rule defaults to a http catch-all. Whether that sends
 	// just traffic matching the host to the default backend or all traffic to the
@@ -231,7 +231,7 @@ type HTTPIngressPath struct {
 	// as defined by RFC 3986. Paths must begin with a '/'. When unspecified,
 	// all paths from incoming requests are matched.
 	// +optional
-	Path string `json:"path,omitempty" protobuf:"bytes,1,opt,name=path"`
+	Path *string `json:"path,omitempty" protobuf:"bytes,1,opt,name=path"`
 
 	// PathType determines the interpretation of the Path matching. PathType can
 	// be one of the following values:
@@ -252,14 +252,14 @@ type HTTPIngressPath struct {
 
 	// Backend defines the referenced service endpoint to which the traffic
 	// will be forwarded to.
-	Backend IngressBackend `json:"backend" protobuf:"bytes,2,opt,name=backend"`
+	Backend *IngressBackend `json:"backend" protobuf:"bytes,2,opt,name=backend"`
 }
 
 // IngressBackend describes all endpoints for a given service and port.
 type IngressBackend struct {
 	// Specifies the name of the referenced service.
 	// +optional
-	ServiceName string `json:"serviceName,omitempty" protobuf:"bytes,1,opt,name=serviceName"`
+	ServiceName *string `json:"serviceName,omitempty" protobuf:"bytes,1,opt,name=serviceName"`
 
 	// Specifies the port of the referenced service.
 	// +optional
@@ -294,7 +294,7 @@ type IngressClass struct {
 	// Spec is the desired state of the IngressClass.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec IngressClassSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *IngressClassSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // IngressClassSpec provides information about the class of an Ingress.
@@ -305,7 +305,7 @@ type IngressClassSpec struct {
 	// same implementing controller. This should be specified as a
 	// domain-prefixed path no more than 250 characters in length, e.g.
 	// "acme.io/ingress-controller". This field is immutable.
-	Controller string `json:"controller,omitempty" protobuf:"bytes,1,opt,name=controller"`
+	Controller *string `json:"controller,omitempty" protobuf:"bytes,1,opt,name=controller"`
 
 	// Parameters is a link to a custom resource containing additional
 	// configuration for the controller. This is optional if the controller does
@@ -332,9 +332,9 @@ type IngressClassParametersReference struct {
 	// +optional
 	APIGroup *string `json:"apiGroup,omitempty" protobuf:"bytes,1,opt,name=aPIGroup"`
 	// Kind is the type of resource being referenced.
-	Kind string `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+	Kind *string `json:"kind" protobuf:"bytes,2,opt,name=kind"`
 	// Name is the name of resource being referenced.
-	Name string `json:"name" protobuf:"bytes,3,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,3,opt,name=name"`
 	// Scope represents if this refers to a cluster or namespace scoped resource.
 	// This may be set to "Cluster" (default) or "Namespace".
 	// Field can be enabled with IngressClassNamespacedParams feature gate.

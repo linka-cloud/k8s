@@ -1,13 +1,15 @@
 // This is a generated file. Do not edit directly.
 
-module k8s.io/api
+module go.linka.cloud/k8s
 
-go 1.16
+go 1.19
 
 require (
 	github.com/gogo/protobuf v1.3.2
-	github.com/stretchr/testify v1.6.1
+	github.com/stretchr/testify v1.8.0
+	golang.org/x/tools v0.2.0
 	k8s.io/apimachinery v0.0.0-20220328170958-67c29d29c4cd
+	k8s.io/code-generator v0.26.2
 )
 
 replace k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20220328170958-67c29d29c4cd

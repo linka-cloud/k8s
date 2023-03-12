@@ -52,7 +52,7 @@ type PodDisruptionBudgetStatus struct {
 	// Most recent generation observed when updating this PDB status. DisruptionsAllowed and other
 	// status information is valid only if observedGeneration equals to PDB's object generation.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
+	ObservedGeneration *int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
 
 	// DisruptedPods contains information about pods whose eviction was
 	// processed by the API server eviction subresource handler but has not
@@ -69,16 +69,16 @@ type PodDisruptionBudgetStatus struct {
 	DisruptedPods map[string]metav1.Time `json:"disruptedPods,omitempty" protobuf:"bytes,2,rep,name=disruptedPods"`
 
 	// Number of pod disruptions that are currently allowed.
-	DisruptionsAllowed int32 `json:"disruptionsAllowed" protobuf:"varint,3,opt,name=disruptionsAllowed"`
+	DisruptionsAllowed *int32 `json:"disruptionsAllowed" protobuf:"varint,3,opt,name=disruptionsAllowed"`
 
 	// current number of healthy pods
-	CurrentHealthy int32 `json:"currentHealthy" protobuf:"varint,4,opt,name=currentHealthy"`
+	CurrentHealthy *int32 `json:"currentHealthy" protobuf:"varint,4,opt,name=currentHealthy"`
 
 	// minimum desired number of healthy pods
-	DesiredHealthy int32 `json:"desiredHealthy" protobuf:"varint,5,opt,name=desiredHealthy"`
+	DesiredHealthy *int32 `json:"desiredHealthy" protobuf:"varint,5,opt,name=desiredHealthy"`
 
 	// total number of pods counted by this disruption budget
-	ExpectedPods int32 `json:"expectedPods" protobuf:"varint,6,opt,name=expectedPods"`
+	ExpectedPods *int32 `json:"expectedPods" protobuf:"varint,6,opt,name=expectedPods"`
 
 	// Conditions contain conditions for PDB. The disruption controller sets the
 	// DisruptionAllowed condition. The following are known values for the reason field
@@ -130,10 +130,10 @@ type PodDisruptionBudget struct {
 
 	// Specification of the desired behavior of the PodDisruptionBudget.
 	// +optional
-	Spec PodDisruptionBudgetSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *PodDisruptionBudgetSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 	// Most recently observed status of the PodDisruptionBudget.
 	// +optional
-	Status PodDisruptionBudgetStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *PodDisruptionBudgetStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

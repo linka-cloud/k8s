@@ -32,11 +32,11 @@ type ImageReview struct {
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// Spec holds information about the pod being evaluated
-	Spec ImageReviewSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ImageReviewSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 
 	// Status is filled in by the backend and indicates whether the pod should be allowed.
 	// +optional
-	Status ImageReviewStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *ImageReviewStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // ImageReviewSpec is a description of the pod creation request.
@@ -51,26 +51,26 @@ type ImageReviewSpec struct {
 	Annotations map[string]string `json:"annotations,omitempty" protobuf:"bytes,2,rep,name=annotations"`
 	// Namespace is the namespace the pod is being created in.
 	// +optional
-	Namespace string `json:"namespace,omitempty" protobuf:"bytes,3,opt,name=namespace"`
+	Namespace *string `json:"namespace,omitempty" protobuf:"bytes,3,opt,name=namespace"`
 }
 
 // ImageReviewContainerSpec is a description of a container within the pod creation request.
 type ImageReviewContainerSpec struct {
 	// This can be in the form image:tag or image@SHA:012345679abcdef.
 	// +optional
-	Image string `json:"image,omitempty" protobuf:"bytes,1,opt,name=image"`
+	Image *string `json:"image,omitempty" protobuf:"bytes,1,opt,name=image"`
 	// In future, we may add command line overrides, exec health check command lines, and so on.
 }
 
 // ImageReviewStatus is the result of the review for the pod creation request.
 type ImageReviewStatus struct {
 	// Allowed indicates that all images were allowed to be run.
-	Allowed bool `json:"allowed" protobuf:"varint,1,opt,name=allowed"`
+	Allowed *bool `json:"allowed" protobuf:"varint,1,opt,name=allowed"`
 	// Reason should be empty unless Allowed is false in which case it
 	// may contain a short description of what is wrong.  Kubernetes
 	// may truncate excessively long errors when displaying to the user.
 	// +optional
-	Reason string `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
+	Reason *string `json:"reason,omitempty" protobuf:"bytes,2,opt,name=reason"`
 	// AuditAnnotations will be added to the attributes object of the
 	// admission controller request using 'AddAnnotation'.  The keys should
 	// be prefix-less (i.e., the admission controller will add an
