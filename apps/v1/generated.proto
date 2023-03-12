@@ -19,16 +19,16 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.apps.v1;
+package go.linka.cloud.k8s.apps.v1;
 
-import "k8s.io/api/core/v1/generated.proto";
+import "go.linka.cloud/k8s/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 import "k8s.io/apimachinery/pkg/util/intstr/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "v1";
+option go_package = "go.linka.cloud/k8s/apps/v1";
 
 // ControllerRevision implements an immutable snapshot of state data. Clients
 // are responsible for serializing and deserializing the objects that contain
