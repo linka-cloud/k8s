@@ -19,16 +19,16 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.storage.v1beta1;
+package go.linka.cloud.k8s.storage.v1beta1;
 
-import "k8s.io/api/core/v1/generated.proto";
+import "go.linka.cloud/k8s/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/api/resource/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "v1beta1";
+option go_package = "go.linka.cloud/k8s/storage/v1beta1";
 
 // CSIDriver captures information about a Container Storage Interface (CSI)
 // volume driver deployed on the cluster.

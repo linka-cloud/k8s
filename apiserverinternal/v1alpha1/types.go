@@ -31,11 +31,11 @@ type StorageVersion struct {
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// Spec is an empty spec. It is here to comply with Kubernetes API style.
-	Spec StorageVersionSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *StorageVersionSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 
 	// API server instances report the version they can decode and the version they
 	// encode objects to when persisting objects in the backend.
-	Status StorageVersionStatus `json:"status" protobuf:"bytes,3,opt,name=status"`
+	Status *StorageVersionStatus `json:"status" protobuf:"bytes,3,opt,name=status"`
 }
 
 // StorageVersionSpec is an empty spec.
@@ -67,11 +67,11 @@ type StorageVersionStatus struct {
 // encodes objects to when persisting objects in the backend.
 type ServerStorageVersion struct {
 	// The ID of the reporting API server.
-	APIServerID string `json:"apiServerID,omitempty" protobuf:"bytes,1,opt,name=apiServerID"`
+	APIServerID *string `json:"apiServerID,omitempty" protobuf:"bytes,1,opt,name=apiServerID"`
 
 	// The API server encodes the object to this version when persisting it in
 	// the backend (e.g., etcd).
-	EncodingVersion string `json:"encodingVersion,omitempty" protobuf:"bytes,2,opt,name=encodingVersion"`
+	EncodingVersion *string `json:"encodingVersion,omitempty" protobuf:"bytes,2,opt,name=encodingVersion"`
 
 	// The API server can decode objects encoded in these versions.
 	// The encodingVersion must be included in the decodableVersions.
@@ -98,22 +98,22 @@ const (
 type StorageVersionCondition struct {
 	// Type of the condition.
 	// +required
-	Type StorageVersionConditionType `json:"type" protobuf:"bytes,1,opt,name=type"`
+	Type *StorageVersionConditionType `json:"type" protobuf:"bytes,1,opt,name=type"`
 	// Status of the condition, one of True, False, Unknown.
 	// +required
-	Status ConditionStatus `json:"status" protobuf:"bytes,2,opt,name=status"`
+	Status *ConditionStatus `json:"status" protobuf:"bytes,2,opt,name=status"`
 	// If set, this represents the .metadata.generation that the condition was set based upon.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,3,opt,name=observedGeneration"`
+	ObservedGeneration *int64 `json:"observedGeneration,omitempty" protobuf:"varint,3,opt,name=observedGeneration"`
 	// Last time the condition transitioned from one status to another.
 	// +required
 	LastTransitionTime metav1.Time `json:"lastTransitionTime,omitempty" protobuf:"bytes,4,opt,name=lastTransitionTime"`
 	// The reason for the condition's last transition.
 	// +required
-	Reason string `json:"reason" protobuf:"bytes,5,opt,name=reason"`
+	Reason *string `json:"reason" protobuf:"bytes,5,opt,name=reason"`
 	// A human readable message indicating details about the transition.
 	// +required
-	Message string `json:"message,omitempty" protobuf:"bytes,6,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,6,opt,name=message"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

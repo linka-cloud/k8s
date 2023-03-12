@@ -17,7 +17,7 @@ limitations under the License.
 package v1
 
 import (
-	authenticationv1 "k8s.io/api/authentication/v1"
+	authenticationv1 "go.linka.cloud/k8s/authentication/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
@@ -49,7 +49,7 @@ type AdmissionRequest struct {
 	Resource metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
 	// SubResource is the subresource being requested, if any (for example, "status" or "scale")
 	// +optional
-	SubResource string `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+	SubResource *string `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
 
 	// RequestKind is the fully-qualified type of the original API request (for example, v1.Pod or autoscaling.v1.Scale).
 	// If this is specified and differs from the value in "kind", an equivalent match and conversion was performed.
@@ -79,18 +79,18 @@ type AdmissionRequest struct {
 	// If this is specified and differs from the value in "subResource", an equivalent match and conversion was performed.
 	// See documentation for the "matchPolicy" field in the webhook configuration type.
 	// +optional
-	RequestSubResource string `json:"requestSubResource,omitempty" protobuf:"bytes,15,opt,name=requestSubResource"`
+	RequestSubResource *string `json:"requestSubResource,omitempty" protobuf:"bytes,15,opt,name=requestSubResource"`
 
 	// Name is the name of the object as presented in the request.  On a CREATE operation, the client may omit name and
 	// rely on the server to generate the name.  If that is the case, this field will contain an empty string.
 	// +optional
-	Name string `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+	Name *string `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
 	// Namespace is the namespace associated with the request (if any).
 	// +optional
-	Namespace string `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+	Namespace *string `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
 	// Operation is the operation being performed. This may be different than the operation
 	// requested. e.g. a patch can result in either a CREATE or UPDATE Operation.
-	Operation Operation `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+	Operation *Operation `json:"operation" protobuf:"bytes,7,opt,name=operation"`
 	// UserInfo is information about the requesting user
 	UserInfo authenticationv1.UserInfo `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
 	// Object is the object from the incoming request.
@@ -119,7 +119,7 @@ type AdmissionResponse struct {
 	UID types.UID `json:"uid" protobuf:"bytes,1,opt,name=uid"`
 
 	// Allowed indicates whether or not the admission request was permitted.
-	Allowed bool `json:"allowed" protobuf:"varint,2,opt,name=allowed"`
+	Allowed *bool `json:"allowed" protobuf:"varint,2,opt,name=allowed"`
 
 	// Result contains extra details into why an admission request was denied.
 	// This field IS NOT consulted in any way if "Allowed" is "true".

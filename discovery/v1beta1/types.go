@@ -17,7 +17,7 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -43,7 +43,7 @@ type EndpointSlice struct {
 	// * IPv4: Represents an IPv4 Address.
 	// * IPv6: Represents an IPv6 Address.
 	// * FQDN: Represents a Fully Qualified Domain Name.
-	AddressType AddressType `json:"addressType" protobuf:"bytes,4,rep,name=addressType"`
+	AddressType *AddressType `json:"addressType" protobuf:"bytes,4,rep,name=addressType"`
 	// endpoints is a list of unique endpoints in this slice. Each slice may
 	// include a maximum of 1000 endpoints.
 	// +listType=atomic
@@ -80,7 +80,7 @@ type Endpoint struct {
 	// +listType=set
 	Addresses []string `json:"addresses" protobuf:"bytes,1,rep,name=addresses"`
 	// conditions contains information about the current status of the endpoint.
-	Conditions EndpointConditions `json:"conditions,omitempty" protobuf:"bytes,2,opt,name=conditions"`
+	Conditions *EndpointConditions `json:"conditions,omitempty" protobuf:"bytes,2,opt,name=conditions"`
 	// hostname of this endpoint. This field may be used by consumers of
 	// endpoints to distinguish endpoints from each other (e.g. in DNS names).
 	// Multiple endpoints which use the same hostname should be considered
@@ -156,7 +156,7 @@ type EndpointHints struct {
 // ForZone provides information about which zones should consume this endpoint.
 type ForZone struct {
 	// name represents the name of the zone.
-	Name string `json:"name" protobuf:"bytes,1,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,name=name"`
 }
 
 // EndpointPort represents a Port used by an EndpointSlice

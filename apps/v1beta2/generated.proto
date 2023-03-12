@@ -19,16 +19,16 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.apps.v1beta2;
+package go.linka.cloud.k8s.apps.v1beta2;
 
-import "k8s.io/api/core/v1/generated.proto";
+import "go.linka.cloud/k8s/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 import "k8s.io/apimachinery/pkg/util/intstr/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "v1beta2";
+option go_package = "go.linka.cloud/k8s/apps/v1beta2";
 
 // DEPRECATED - This group version of ControllerRevision is deprecated by apps/v1/ControllerRevision. See the
 // release notes for more information.
