@@ -35,7 +35,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	config.ContentType = "application/json"
 	c, err := client.New(config, client.Options{
 		Scheme: scheme,
 	})

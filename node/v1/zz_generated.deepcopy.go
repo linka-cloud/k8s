@@ -22,7 +22,7 @@ limitations under the License.
 package v1
 
 import (
-	corev1 "k8s.io/api/core/v1"
+	corev1 "go.linka.cloud/k8s/core/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -54,6 +54,11 @@ func (in *RuntimeClass) DeepCopyInto(out *RuntimeClass) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
+	if in.Handler != nil {
+		in, out := &in.Handler, &out.Handler
+		*out = new(string)
+		**out = **in
+	}
 	if in.Overhead != nil {
 		in, out := &in.Overhead, &out.Overhead
 		*out = new(Overhead)
