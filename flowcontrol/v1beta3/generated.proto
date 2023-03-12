@@ -19,14 +19,14 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.flowcontrol.v1beta3;
+package go.linka.cloud.k8s.flowcontrol.v1beta3;
 
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "k8s.io/api/flowcontrol/v1beta3";
+option go_package = "go.linka.cloud/k8s/flowcontrol/v1beta3";
 
 // ExemptPriorityLevelConfiguration describes the configurable aspects
 // of the handling of exempt requests.

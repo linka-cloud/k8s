@@ -17,7 +17,7 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1 "k8s.io/api/admissionregistration/v1"
+	v1 "go.linka.cloud/k8s/admissionregistration/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -99,20 +99,20 @@ type ValidatingAdmissionPolicy struct {
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 	// Specification of the desired behavior of the ValidatingAdmissionPolicy.
-	Spec ValidatingAdmissionPolicySpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ValidatingAdmissionPolicySpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 	// The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy
 	// behaves in the expected way.
 	// Populated by the system.
 	// Read-only.
 	// +optional
-	Status ValidatingAdmissionPolicyStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *ValidatingAdmissionPolicyStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.
 type ValidatingAdmissionPolicyStatus struct {
 	// The generation observed by the controller.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
+	ObservedGeneration *int64 `json:"observedGeneration,omitempty" protobuf:"varint,1,opt,name=observedGeneration"`
 	// The results of type checking for each expression.
 	// Presence of this field indicates the completion of the type checking.
 	// +optional
@@ -141,11 +141,11 @@ type ExpressionWarning struct {
 	// The path to the field that refers the expression.
 	// For example, the reference to the expression of the first item of
 	// validations is "spec.validations[0].expression"
-	FieldRef string `json:"fieldRef" protobuf:"bytes,2,opt,name=fieldRef"`
+	FieldRef *string `json:"fieldRef" protobuf:"bytes,2,opt,name=fieldRef"`
 	// The content of type checking information in a human-readable form.
 	// Each line of the warning contains the type that the expression is checked
 	// against, followed by the type check error from the compiler.
-	Warning string `json:"warning" protobuf:"bytes,3,opt,name=warning"`
+	Warning *string `json:"warning" protobuf:"bytes,3,opt,name=warning"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -251,11 +251,11 @@ type ParamKind struct {
 	// APIVersion is the API group version the resources belong to.
 	// In format of "group/version".
 	// Required.
-	APIVersion string `json:"apiVersion,omitempty" protobuf:"bytes,1,rep,name=apiVersion"`
+	APIVersion *string `json:"apiVersion,omitempty" protobuf:"bytes,1,rep,name=apiVersion"`
 
 	// Kind is the API kind the resources belong to.
 	// Required.
-	Kind string `json:"kind,omitempty" protobuf:"bytes,2,rep,name=kind"`
+	Kind *string `json:"kind,omitempty" protobuf:"bytes,2,rep,name=kind"`
 }
 
 // Validation specifies the CEL expression which is used to apply the validation.
@@ -301,7 +301,7 @@ type Validation struct {
 	//     are overwritten by values in `Y` when the key sets of `X` and `Y` intersect. Elements in `Y` with
 	//     non-intersecting keys are appended, retaining their partial order.
 	// Required.
-	Expression string `json:"expression" protobuf:"bytes,1,opt,name=Expression"`
+	Expression *string `json:"expression" protobuf:"bytes,1,opt,name=Expression"`
 	// Message represents the message displayed when validation fails. The message is required if the Expression contains
 	// line breaks. The message must not contain line breaks.
 	// If unset, the message is "failed rule: {Rule}".
@@ -310,7 +310,7 @@ type Validation struct {
 	// The message must not contain line breaks.
 	// If unset, the message is "failed Expression: {Expression}".
 	// +optional
-	Message string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
 	// Reason represents a machine-readable description of why this validation failed.
 	// If this is the first validation in the list to fail, this reason, as well as the
 	// corresponding HTTP response code, are used in the
@@ -330,7 +330,7 @@ type Validation struct {
 	// Example:
 	// "object.x must be less than max ("+string(params.max)+")"
 	// +optional
-	MessageExpression string `json:"messageExpression,omitempty" protobuf:"bytes,4,opt,name=messageExpression"`
+	MessageExpression *string `json:"messageExpression,omitempty" protobuf:"bytes,4,opt,name=messageExpression"`
 }
 
 // Variable is the definition of a variable that is used for composition. A variable is defined as a named expression.
@@ -339,11 +339,11 @@ type Variable struct {
 	// Name is the name of the variable. The name must be a valid CEL identifier and unique among all variables.
 	// The variable can be accessed in other expressions through `variables`
 	// For example, if name is "foo", the variable will be available as `variables.foo`
-	Name string `json:"name" protobuf:"bytes,1,opt,name=Name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=Name"`
 
 	// Expression is the expression that will be evaluated as the value of the variable.
 	// The CEL expression has access to the same identifiers as the CEL expressions in Validation.
-	Expression string `json:"expression" protobuf:"bytes,2,opt,name=Expression"`
+	Expression *string `json:"expression" protobuf:"bytes,2,opt,name=Expression"`
 }
 
 // AuditAnnotation describes how to produce an audit annotation for an API request.
@@ -363,7 +363,7 @@ type AuditAnnotation struct {
 	// will be discarded.
 	//
 	// Required.
-	Key string `json:"key" protobuf:"bytes,1,opt,name=key"`
+	Key *string `json:"key" protobuf:"bytes,1,opt,name=key"`
 
 	// valueExpression represents the expression which is evaluated by CEL to
 	// produce an audit annotation value. The expression must evaluate to either
@@ -380,7 +380,7 @@ type AuditAnnotation struct {
 	// will be joined together in a comma-separated list.
 	//
 	// Required.
-	ValueExpression string `json:"valueExpression" protobuf:"bytes,2,opt,name=valueExpression"`
+	ValueExpression *string `json:"valueExpression" protobuf:"bytes,2,opt,name=valueExpression"`
 }
 
 // +genclient
@@ -405,7 +405,7 @@ type ValidatingAdmissionPolicyBinding struct {
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 	// Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.
-	Spec ValidatingAdmissionPolicyBindingSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ValidatingAdmissionPolicyBindingSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -427,7 +427,7 @@ type ValidatingAdmissionPolicyBindingSpec struct {
 	// PolicyName references a ValidatingAdmissionPolicy name which the ValidatingAdmissionPolicyBinding binds to.
 	// If the referenced resource does not exist, this binding is considered invalid and will be ignored
 	// Required.
-	PolicyName string `json:"policyName,omitempty" protobuf:"bytes,1,rep,name=policyName"`
+	PolicyName *string `json:"policyName,omitempty" protobuf:"bytes,1,rep,name=policyName"`
 
 	// paramRef specifies the parameter resource used to configure the admission control policy.
 	// It should point to a resource of the type specified in ParamKind of the bound ValidatingAdmissionPolicy.
@@ -500,7 +500,7 @@ type ParamRef struct {
 	// by setting the `name` field, leaving `selector` blank, and setting namespace
 	// if `paramKind` is namespace-scoped.
 	//
-	Name string `json:"name,omitempty" protobuf:"bytes,1,rep,name=name"`
+	Name *string `json:"name,omitempty" protobuf:"bytes,1,rep,name=name"`
 
 	// namespace is the namespace of the referenced resource. Allows limiting
 	// the search for params to a specific namespace. Applies to both `name` and
@@ -518,7 +518,7 @@ type ParamRef struct {
 	// resources, which will result in an error.
 	//
 	// +optional
-	Namespace string `json:"namespace,omitempty" protobuf:"bytes,2,rep,name=namespace"`
+	Namespace *string `json:"namespace,omitempty" protobuf:"bytes,2,rep,name=namespace"`
 
 	// selector can be used to match multiple param objects based on their labels.
 	// Supply selector: {} to match all resources of the ParamKind.
@@ -750,11 +750,11 @@ type ValidatingWebhook struct {
 	// "imagepolicy" is the name of the webhook, and kubernetes.io is the name
 	// of the organization.
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 
 	// ClientConfig defines how to communicate with the hook.
 	// Required
-	ClientConfig WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
+	ClientConfig *WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
 
 	// Rules describes what operations on what resources/subresources the webhook cares about.
 	// The webhook cares about an operation if it matches _any_ Rule.
@@ -904,11 +904,11 @@ type MutatingWebhook struct {
 	// "imagepolicy" is the name of the webhook, and kubernetes.io is the name
 	// of the organization.
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 
 	// ClientConfig defines how to communicate with the hook.
 	// Required
-	ClientConfig WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
+	ClientConfig *WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
 
 	// Rules describes what operations on what resources/subresources the webhook cares about.
 	// The webhook cares about an operation if it matches _any_ Rule.
@@ -1149,10 +1149,10 @@ type WebhookClientConfig struct {
 type ServiceReference struct {
 	// `namespace` is the namespace of the service.
 	// Required
-	Namespace string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
+	Namespace *string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
 	// `name` is the name of the service.
 	// Required
-	Name string `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,2,opt,name=name"`
 
 	// `path` is an optional URL path which will be sent in any request to
 	// this service.
@@ -1177,7 +1177,7 @@ type MatchCondition struct {
 	// optional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')
 	//
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 
 	// Expression represents the expression which will be evaluated by CEL. Must evaluate to bool.
 	// CEL expressions have access to the contents of the AdmissionRequest and Authorizer, organized into CEL variables:
@@ -1192,5 +1192,5 @@ type MatchCondition struct {
 	// Documentation on CEL: https://kubernetes.io/docs/reference/using-api/cel/
 	//
 	// Required.
-	Expression string `json:"expression" protobuf:"bytes,2,opt,name=expression"`
+	Expression *string `json:"expression" protobuf:"bytes,2,opt,name=expression"`
 }

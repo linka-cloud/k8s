@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -43,13 +43,13 @@ type VolumeAttachment struct {
 
 	// spec represents specification of the desired attach/detach volume behavior.
 	// Populated by the Kubernetes system.
-	Spec VolumeAttachmentSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *VolumeAttachmentSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 
 	// status represents status of the VolumeAttachment request.
 	// Populated by the entity completing the attach or detach
 	// operation, i.e. the external-attacher.
 	// +optional
-	Status VolumeAttachmentStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *VolumeAttachmentStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -74,13 +74,13 @@ type VolumeAttachmentList struct {
 type VolumeAttachmentSpec struct {
 	// attacher indicates the name of the volume driver that MUST handle this
 	// request. This is the name returned by GetPluginName().
-	Attacher string `json:"attacher" protobuf:"bytes,1,opt,name=attacher"`
+	Attacher *string `json:"attacher" protobuf:"bytes,1,opt,name=attacher"`
 
 	// source represents the volume that should be attached.
-	Source VolumeAttachmentSource `json:"source" protobuf:"bytes,2,opt,name=source"`
+	Source *VolumeAttachmentSource `json:"source" protobuf:"bytes,2,opt,name=source"`
 
 	// nodeName represents the node that the volume should be attached to.
-	NodeName string `json:"nodeName" protobuf:"bytes,3,opt,name=nodeName"`
+	NodeName *string `json:"nodeName" protobuf:"bytes,3,opt,name=nodeName"`
 }
 
 // VolumeAttachmentSource represents a volume that should be attached.
@@ -107,7 +107,7 @@ type VolumeAttachmentStatus struct {
 	// attached indicates the volume is successfully attached.
 	// This field must only be set by the entity completing the attach
 	// operation, i.e. the external-attacher.
-	Attached bool `json:"attached" protobuf:"varint,1,opt,name=attached"`
+	Attached *bool `json:"attached" protobuf:"varint,1,opt,name=attached"`
 
 	// attachmentMetadata is populated with any
 	// information returned by the attach operation, upon successful attach, that must be passed
@@ -140,7 +140,7 @@ type VolumeError struct {
 	// This string maybe logged, so it should not contain sensitive
 	// information.
 	// +optional
-	Message string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
 }
 
 // +genclient
@@ -203,7 +203,7 @@ type CSIStorageCapacity struct {
 	// the CSIStorageCapacity object is obsolete and should be removed by its
 	// creator.
 	// This field is immutable.
-	StorageClassName string `json:"storageClassName" protobuf:"bytes,3,name=storageClassName"`
+	StorageClassName *string `json:"storageClassName" protobuf:"bytes,3,name=storageClassName"`
 
 	// capacity is the value reported by the CSI driver in its GetCapacityResponse
 	// for a GetCapacityRequest with topology and parameters that match the
@@ -270,7 +270,7 @@ type VolumeAttributesClass struct {
 
 	// Name of the CSI driver
 	// This field is immutable.
-	DriverName string `json:"driverName" protobuf:"bytes,2,opt,name=driverName"`
+	DriverName *string `json:"driverName" protobuf:"bytes,2,opt,name=driverName"`
 
 	// parameters hold volume attributes defined by the CSI driver. These values
 	// are opaque to the Kubernetes and are passed directly to the CSI driver.

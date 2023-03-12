@@ -41,7 +41,7 @@ type IPAddress struct {
 	// spec is the desired state of the IPAddress.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec IPAddressSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *IPAddressSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // IPAddressSpec describe the attributes in an IP Address.
@@ -56,16 +56,16 @@ type IPAddressSpec struct {
 type ParentReference struct {
 	// Group is the group of the object being referenced.
 	// +optional
-	Group string `json:"group,omitempty" protobuf:"bytes,1,opt,name=group"`
+	Group *string `json:"group,omitempty" protobuf:"bytes,1,opt,name=group"`
 	// Resource is the resource of the object being referenced.
 	// +required
-	Resource string `json:"resource,omitempty" protobuf:"bytes,2,opt,name=resource"`
+	Resource *string `json:"resource,omitempty" protobuf:"bytes,2,opt,name=resource"`
 	// Namespace is the namespace of the object being referenced.
 	// +optional
-	Namespace string `json:"namespace,omitempty" protobuf:"bytes,3,opt,name=namespace"`
+	Namespace *string `json:"namespace,omitempty" protobuf:"bytes,3,opt,name=namespace"`
 	// Name is the name of the object being referenced.
 	// +required
-	Name string `json:"name,omitempty" protobuf:"bytes,4,opt,name=name"`
+	Name *string `json:"name,omitempty" protobuf:"bytes,4,opt,name=name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -98,11 +98,11 @@ type ServiceCIDR struct {
 	// spec is the desired state of the ServiceCIDR.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec ServiceCIDRSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ServiceCIDRSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 	// status represents the current state of the ServiceCIDR.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Status ServiceCIDRStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *ServiceCIDRStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // ServiceCIDRSpec define the CIDRs the user wants to use for allocating ClusterIPs for Services.
