@@ -19,16 +19,16 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.networking.v1beta1;
+package go.linka.cloud.k8s.networking.v1beta1;
 
-import "k8s.io/api/core/v1/generated.proto";
+import "go.linka.cloud/k8s/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 import "k8s.io/apimachinery/pkg/util/intstr/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "k8s.io/api/networking/v1beta1";
+option go_package = "go.linka.cloud/k8s/networking/v1beta1";
 
 // HTTPIngressPath associates a path with a backend. Incoming urls matching the
 // path are forwarded to the backend.
@@ -84,7 +84,7 @@ message IPAddress {
   // Standard object's metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // spec is the desired state of the IPAddress.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
@@ -97,7 +97,7 @@ message IPAddressList {
   // Standard object's metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // items is the list of IPAddresses.
   repeated IPAddress items = 2;
@@ -119,7 +119,7 @@ message Ingress {
   // Standard object's metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // spec is the desired state of the Ingress.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
@@ -140,13 +140,13 @@ message IngressBackend {
 
   // servicePort Specifies the port of the referenced service.
   // +optional
-  optional .k8s.io.apimachinery.pkg.util.intstr.IntOrString servicePort = 2;
+  optional k8s.io.apimachinery.pkg.util.intstr.IntOrString servicePort = 2;
 
   // resource is an ObjectRef to another Kubernetes resource in the namespace
   // of the Ingress object. If resource is specified, serviceName and servicePort
   // must not be specified.
   // +optional
-  optional .k8s.io.api.core.v1.TypedLocalObjectReference resource = 3;
+  optional k8s.io.api.core.v1.TypedLocalObjectReference resource = 3;
 }
 
 // IngressClass represents the class of the Ingress, referenced by the Ingress
@@ -158,7 +158,7 @@ message IngressClass {
   // Standard object's metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // spec is the desired state of the IngressClass.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
@@ -170,7 +170,7 @@ message IngressClass {
 message IngressClassList {
   // Standard list metadata.
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // items is the list of IngressClasses.
   repeated IngressClass items = 2;
@@ -224,7 +224,7 @@ message IngressList {
   // Standard object's metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // items is the list of Ingress.
   repeated Ingress items = 2;
@@ -414,7 +414,7 @@ message ServiceCIDR {
   // Standard object's metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // spec is the desired state of the ServiceCIDR.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
@@ -432,7 +432,7 @@ message ServiceCIDRList {
   // Standard object's metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // items is the list of ServiceCIDRs.
   repeated ServiceCIDR items = 2;
@@ -457,6 +457,6 @@ message ServiceCIDRStatus {
   // +patchStrategy=merge
   // +listType=map
   // +listMapKey=type
-  repeated .k8s.io.apimachinery.pkg.apis.meta.v1.Condition conditions = 1;
+  repeated k8s.io.apimachinery.pkg.apis.meta.v1.Condition conditions = 1;
 }
 

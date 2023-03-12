@@ -19,16 +19,16 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.resource.v1alpha3;
+package go.linka.cloud.k8s.resource.v1alpha3;
 
-import "k8s.io/api/core/v1/generated.proto";
+import "go.linka.cloud/k8s/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/api/resource/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "k8s.io/api/resource/v1alpha3";
+option go_package = "go.linka.cloud/k8s/resource/v1alpha3";
 
 // AllocationResult contains attributes of an allocated resource.
 message AllocationResult {
@@ -41,7 +41,7 @@ message AllocationResult {
   // unset, they are available everywhere.
   //
   // +optional
-  optional .k8s.io.api.core.v1.NodeSelector nodeSelector = 3;
+  optional k8s.io.api.core.v1.NodeSelector nodeSelector = 3;
 
   // Controller is the name of the DRA driver which handled the
   // allocation. That driver is also responsible for deallocating the
@@ -76,7 +76,7 @@ message BasicDevice {
   // The maximum number of attributes and capacities combined is 32.
   //
   // +optional
-  map<string, .k8s.io.apimachinery.pkg.api.resource.Quantity> capacity = 2;
+  map<string, k8s.io.apimachinery.pkg.api.resource.Quantity> capacity = 2;
 }
 
 // CELDeviceSelector contains a CEL expression for selecting a device.
@@ -263,7 +263,7 @@ message DeviceClaimConfiguration {
 message DeviceClass {
   // Standard object metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // Spec defines what can be allocated and how to configure it.
   //
@@ -285,7 +285,7 @@ message DeviceClassConfiguration {
 message DeviceClassList {
   // Standard list metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // Items is the list of resource classes.
   repeated DeviceClass items = 2;
@@ -324,7 +324,7 @@ message DeviceClassSpec {
   //
   // +optional
   // +featureGate=DRAControlPlaneController
-  optional .k8s.io.api.core.v1.NodeSelector suitableNodes = 3;
+  optional k8s.io.api.core.v1.NodeSelector suitableNodes = 3;
 }
 
 // DeviceConfiguration must have exactly one field set. It gets embedded
@@ -513,7 +513,7 @@ message OpaqueDeviceConfiguration {
   // Kubernetes types), with conversion between different versions.
   //
   // +required
-  optional .k8s.io.apimachinery.pkg.runtime.RawExtension parameters = 2;
+  optional k8s.io.apimachinery.pkg.runtime.RawExtension parameters = 2;
 }
 
 // PodSchedulingContext objects hold information that is needed to schedule
@@ -525,7 +525,7 @@ message OpaqueDeviceConfiguration {
 message PodSchedulingContext {
   // Standard object metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // Spec describes where resources for the Pod are needed.
   optional PodSchedulingContextSpec spec = 2;
@@ -540,7 +540,7 @@ message PodSchedulingContext {
 message PodSchedulingContextList {
   // Standard list metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // Items is the list of PodSchedulingContext objects.
   repeated PodSchedulingContext items = 2;
@@ -590,7 +590,7 @@ message PodSchedulingContextStatus {
 message ResourceClaim {
   // Standard object metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // Spec describes what is being requested and how to configure it.
   // The spec is immutable.
@@ -628,7 +628,7 @@ message ResourceClaimConsumerReference {
 message ResourceClaimList {
   // Standard list metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // Items is the list of resource claims.
   repeated ResourceClaim items = 2;
@@ -733,7 +733,7 @@ message ResourceClaimStatus {
 message ResourceClaimTemplate {
   // Standard object metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // Describes the ResourceClaim that is to be generated.
   //
@@ -747,7 +747,7 @@ message ResourceClaimTemplate {
 message ResourceClaimTemplateList {
   // Standard list metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // Items is the list of resource claim templates.
   repeated ResourceClaimTemplate items = 2;
@@ -759,7 +759,7 @@ message ResourceClaimTemplateSpec {
   // when creating it. No other fields are allowed and will be rejected during
   // validation.
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // Spec for the ResourceClaim. The entire content is copied unchanged
   // into the ResourceClaim that gets created from this template. The
@@ -831,7 +831,7 @@ message ResourcePool {
 message ResourceSlice {
   // Standard object metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // Contains the information published by the driver.
   //
@@ -843,7 +843,7 @@ message ResourceSlice {
 message ResourceSliceList {
   // Standard list metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // Items is the list of resource ResourceSlices.
   repeated ResourceSlice items = 2;
@@ -891,7 +891,7 @@ message ResourceSliceSpec {
   //
   // +optional
   // +oneOf=NodeSelection
-  optional .k8s.io.api.core.v1.NodeSelector nodeSelector = 4;
+  optional k8s.io.api.core.v1.NodeSelector nodeSelector = 4;
 
   // AllNodes indicates that all nodes have access to the resources in the pool.
   //

@@ -22,7 +22,7 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1 "k8s.io/api/coordination/v1"
+	v1 "go.linka.cloud/k8s/coordination/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -31,7 +31,11 @@ func (in *Lease) DeepCopyInto(out *Lease) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
-	in.Spec.DeepCopyInto(&out.Spec)
+	if in.Spec != nil {
+		in, out := &in.Spec, &out.Spec
+		*out = new(LeaseSpec)
+		(*in).DeepCopyInto(*out)
+	}
 	return
 }
 

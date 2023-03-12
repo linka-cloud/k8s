@@ -1,0 +1,45 @@
+#!/bin/sh
+
+groups=$(find . -name 'types.go'|xargs dirname|sed 's|./||'|sort)
+
+make_imports() {
+	imports=""
+	for g in $groups; do
+		alias=$(echo $g|sed 's|/||g')
+		mod="go.linka.cloud/k8s/$g"
+		imports="$imports\t$alias \"$mod\"\n"
+	done
+	echo $imports
+}
+
+make_builders() {
+	builders=""
+	for g in $groups; do
+		alias=$(echo $g|sed 's|/||g')
+		builders="$builders\t$alias.SchemeBuilder,\n"
+	done
+	echo $builders
+}
+
+
+cat << EOF
+package api
+
+import (
+	"k8s.io/apimachinery/pkg/runtime"
+$(make_imports)
+)
+
+var groups = []runtime.SchemeBuilder{
+$(make_builders)
+}
+
+func AddToScheme(scheme *runtime.Scheme) error {
+	for _, group := range groups {
+		if err := group.AddToScheme(scheme); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+EOF

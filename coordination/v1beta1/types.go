@@ -17,7 +17,7 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1 "k8s.io/api/coordination/v1"
+	v1 "go.linka.cloud/k8s/coordination/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -37,7 +37,7 @@ type Lease struct {
 	// spec contains the specification of the Lease.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec LeaseSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *LeaseSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // LeaseSpec is a specification of a Lease.

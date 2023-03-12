@@ -19,15 +19,15 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.discovery.v1;
+package go.linka.cloud.k8s.discovery.v1;
 
-import "k8s.io/api/core/v1/generated.proto";
+import "go.linka.cloud/k8s/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "k8s.io/api/discovery/v1";
+option go_package = "go.linka.cloud/k8s/discovery/v1";
 
 // Endpoint represents a single logical "backend" implementing a service.
 message Endpoint {
@@ -54,7 +54,7 @@ message Endpoint {
   // targetRef is a reference to a Kubernetes object that represents this
   // endpoint.
   // +optional
-  optional .k8s.io.api.core.v1.ObjectReference targetRef = 4;
+  optional k8s.io.api.core.v1.ObjectReference targetRef = 4;
 
   // deprecatedTopology contains topology information part of the v1beta1
   // API. This field is deprecated, and will be removed when the v1beta1
@@ -161,7 +161,7 @@ message EndpointPort {
 message EndpointSlice {
   // Standard object's metadata.
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // addressType specifies the type of address carried by this EndpointSlice.
   // All addresses in this slice must be the same type. This field is
@@ -191,7 +191,7 @@ message EndpointSlice {
 message EndpointSliceList {
   // Standard list metadata.
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // items is the list of endpoint slices
   repeated EndpointSlice items = 2;

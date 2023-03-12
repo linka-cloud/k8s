@@ -30,7 +30,11 @@ func (in *SelfSubjectReview) DeepCopyInto(out *SelfSubjectReview) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
-	in.Status.DeepCopyInto(&out.Status)
+	if in.Status != nil {
+		in, out := &in.Status, &out.Status
+		*out = new(SelfSubjectReviewStatus)
+		(*in).DeepCopyInto(*out)
+	}
 	return
 }
 

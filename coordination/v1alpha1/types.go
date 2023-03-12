@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/coordination/v1"
+	v1 "go.linka.cloud/k8s/coordination/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -36,7 +36,7 @@ type LeaseCandidate struct {
 	// spec contains the specification of the Lease.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec LeaseCandidateSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *LeaseCandidateSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // LeaseCandidateSpec is a specification of a Lease.
@@ -44,7 +44,7 @@ type LeaseCandidateSpec struct {
 	// LeaseName is the name of the lease for which this candidate is contending.
 	// This field is immutable.
 	// +required
-	LeaseName string `json:"leaseName" protobuf:"bytes,1,name=leaseName"`
+	LeaseName *string `json:"leaseName" protobuf:"bytes,1,name=leaseName"`
 	// PingTime is the last time that the server has requested the LeaseCandidate
 	// to renew. It is only done during leader election to check if any
 	// LeaseCandidates have become ineligible. When PingTime is updated, the
@@ -63,12 +63,12 @@ type LeaseCandidateSpec struct {
 	// BinaryVersion is the binary version. It must be in a semver format without leading `v`.
 	// This field is required when strategy is "OldestEmulationVersion"
 	// +optional
-	BinaryVersion string `json:"binaryVersion,omitempty" protobuf:"bytes,4,opt,name=binaryVersion"`
+	BinaryVersion *string `json:"binaryVersion,omitempty" protobuf:"bytes,4,opt,name=binaryVersion"`
 	// EmulationVersion is the emulation version. It must be in a semver format without leading `v`.
 	// EmulationVersion must be less than or equal to BinaryVersion.
 	// This field is required when strategy is "OldestEmulationVersion"
 	// +optional
-	EmulationVersion string `json:"emulationVersion,omitempty" protobuf:"bytes,5,opt,name=emulationVersion"`
+	EmulationVersion *string `json:"emulationVersion,omitempty" protobuf:"bytes,5,opt,name=emulationVersion"`
 	// PreferredStrategies indicates the list of strategies for picking the leader for coordinated leader election.
 	// The list is ordered, and the first strategy supersedes all other strategies. The list is used by coordinated
 	// leader election to make a decision about the final election strategy. This follows as

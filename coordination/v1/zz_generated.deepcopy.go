@@ -30,7 +30,11 @@ func (in *Lease) DeepCopyInto(out *Lease) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
-	in.Spec.DeepCopyInto(&out.Spec)
+	if in.Spec != nil {
+		in, out := &in.Spec, &out.Spec
+		*out = new(LeaseSpec)
+		(*in).DeepCopyInto(*out)
+	}
 	return
 }
 

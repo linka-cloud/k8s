@@ -19,15 +19,15 @@ limitations under the License.
 
 syntax = "proto2";
 
-package k8s.io.api.storagemigration.v1alpha1;
+package go.linka.cloud.k8s.storagemigration.v1alpha1;
 
-import "k8s.io/api/core/v1/generated.proto";
+import "go.linka.cloud/k8s/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "k8s.io/api/storagemigration/v1alpha1";
+option go_package = "go.linka.cloud/k8s/storagemigration/v1alpha1";
 
 // The names of the group, the version, and the resource.
 message GroupVersionResource {
@@ -51,7 +51,7 @@ message MigrationCondition {
 
   // The last time this condition was updated.
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.Time lastUpdateTime = 3;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.Time lastUpdateTime = 3;
 
   // The reason for the condition's last transition.
   // +optional
@@ -68,7 +68,7 @@ message StorageVersionMigration {
   // Standard object metadata.
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
 
   // Specification of the migration.
   // +optional
@@ -84,7 +84,7 @@ message StorageVersionMigrationList {
   // Standard list metadata
   // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   // +optional
-  optional .k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
 
   // Items is the list of StorageVersionMigration
   // +patchMergeKey=type

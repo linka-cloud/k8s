@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	corev1 "k8s.io/api/core/v1"
+	corev1 "go.linka.cloud/k8s/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -41,7 +41,7 @@ type RuntimeClass struct {
 
 	// spec represents specification of the RuntimeClass
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec RuntimeClassSpec `json:"spec" protobuf:"bytes,2,name=spec"`
+	Spec *RuntimeClassSpec `json:"spec" protobuf:"bytes,2,name=spec"`
 }
 
 // RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters
@@ -59,7 +59,7 @@ type RuntimeClassSpec struct {
 	// in a pod.
 	// The runtimeHandler must be lowercase, conform to the DNS Label (RFC 1123)
 	// requirements, and is immutable.
-	RuntimeHandler string `json:"runtimeHandler" protobuf:"bytes,1,opt,name=runtimeHandler"`
+	RuntimeHandler *string `json:"runtimeHandler" protobuf:"bytes,1,opt,name=runtimeHandler"`
 
 	// overhead represents the resource overhead associated with running a pod for a
 	// given RuntimeClass. For more details, see
