@@ -27,29 +27,29 @@ func TestTaintToString(t *testing.T) {
 	}{
 		{
 			taint: &Taint{
-				Key:    "foo",
-				Value:  "bar",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			expectedString: "foo=bar:NoSchedule",
 		},
 		{
 			taint: &Taint{
-				Key:    "foo",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			expectedString: "foo:NoSchedule",
 		},
 		{
 			taint: &Taint{
-				Key: "foo",
+				Key: ref("foo"),
 			},
 			expectedString: "foo",
 		},
 		{
 			taint: &Taint{
-				Key:   "foo",
-				Value: "bar",
+				Key:   ref("foo"),
+				Value: ref("bar"),
 			},
 			expectedString: "foo=bar:",
 		},
@@ -72,56 +72,56 @@ func TestMatchTaint(t *testing.T) {
 		{
 			description: "two taints with the same key,value,effect should match",
 			taint: &Taint{
-				Key:    "foo",
-				Value:  "bar",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			taintToMatch: Taint{
-				Key:    "foo",
-				Value:  "bar",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			expectMatch: true,
 		},
 		{
 			description: "two taints with the same key,effect but different value should match",
 			taint: &Taint{
-				Key:    "foo",
-				Value:  "bar",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			taintToMatch: Taint{
-				Key:    "foo",
-				Value:  "different-value",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("different-value"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			expectMatch: true,
 		},
 		{
 			description: "two taints with the different key cannot match",
 			taint: &Taint{
-				Key:    "foo",
-				Value:  "bar",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			taintToMatch: Taint{
-				Key:    "different-key",
-				Value:  "bar",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("different-key"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			expectMatch: false,
 		},
 		{
 			description: "two taints with the different effect cannot match",
 			taint: &Taint{
-				Key:    "foo",
-				Value:  "bar",
-				Effect: TaintEffectNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectNoSchedule),
 			},
 			taintToMatch: Taint{
-				Key:    "foo",
-				Value:  "bar",
-				Effect: TaintEffectPreferNoSchedule,
+				Key:    ref("foo"),
+				Value:  ref("bar"),
+				Effect: ref(TaintEffectPreferNoSchedule),
 			},
 			expectMatch: false,
 		},

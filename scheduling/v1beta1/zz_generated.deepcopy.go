@@ -22,7 +22,7 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	v1 "go.linka.cloud/k8s/core/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -31,6 +31,21 @@ func (in *PriorityClass) DeepCopyInto(out *PriorityClass) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
+	if in.Value != nil {
+		in, out := &in.Value, &out.Value
+		*out = new(int32)
+		**out = **in
+	}
+	if in.GlobalDefault != nil {
+		in, out := &in.GlobalDefault, &out.GlobalDefault
+		*out = new(bool)
+		**out = **in
+	}
+	if in.Description != nil {
+		in, out := &in.Description, &out.Description
+		*out = new(string)
+		**out = **in
+	}
 	if in.PreemptionPolicy != nil {
 		in, out := &in.PreemptionPolicy, &out.PreemptionPolicy
 		*out = new(v1.PreemptionPolicy)

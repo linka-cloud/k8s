@@ -76,11 +76,11 @@ type FlowSchema struct {
 	// `spec` is the specification of the desired behavior of a FlowSchema.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec FlowSchemaSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *FlowSchemaSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 	// `status` is the current status of a FlowSchema.
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Status FlowSchemaStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *FlowSchemaStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -106,13 +106,13 @@ type FlowSchemaSpec struct {
 	// `priorityLevelConfiguration` should reference a PriorityLevelConfiguration in the cluster. If the reference cannot
 	// be resolved, the FlowSchema will be ignored and marked as invalid in its status.
 	// Required.
-	PriorityLevelConfiguration PriorityLevelConfigurationReference `json:"priorityLevelConfiguration" protobuf:"bytes,1,opt,name=priorityLevelConfiguration"`
+	PriorityLevelConfiguration *PriorityLevelConfigurationReference `json:"priorityLevelConfiguration" protobuf:"bytes,1,opt,name=priorityLevelConfiguration"`
 	// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen
 	// FlowSchema is among those with the numerically lowest (which we take to be logically highest)
 	// MatchingPrecedence.  Each MatchingPrecedence value must be ranged in [1,10000].
 	// Note that if the precedence is not specified, it will be set to 1000 as default.
 	// +optional
-	MatchingPrecedence int32 `json:"matchingPrecedence" protobuf:"varint,2,opt,name=matchingPrecedence"`
+	MatchingPrecedence *int32 `json:"matchingPrecedence" protobuf:"varint,2,opt,name=matchingPrecedence"`
 	// `distinguisherMethod` defines how to compute the flow distinguisher for requests that match this schema.
 	// `nil` specifies that the distinguisher is disabled and thus will always be the empty string.
 	// +optional
@@ -147,14 +147,14 @@ type FlowDistinguisherMethod struct {
 	// `type` is the type of flow distinguisher method
 	// The supported types are "ByUser" and "ByNamespace".
 	// Required.
-	Type FlowDistinguisherMethodType `json:"type" protobuf:"bytes,1,opt,name=type"`
+	Type *FlowDistinguisherMethodType `json:"type" protobuf:"bytes,1,opt,name=type"`
 }
 
 // PriorityLevelConfigurationReference contains information that points to the "request-priority" being used.
 type PriorityLevelConfigurationReference struct {
 	// `name` is the name of the priority level configuration being referenced
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 }
 
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject
@@ -188,7 +188,7 @@ type Subject struct {
 	// `kind` indicates which one of the other fields is non-empty.
 	// Required
 	// +unionDiscriminator
-	Kind SubjectKind `json:"kind" protobuf:"bytes,1,opt,name=kind"`
+	Kind *SubjectKind `json:"kind" protobuf:"bytes,1,opt,name=kind"`
 	// `user` matches based on username.
 	// +optional
 	User *UserSubject `json:"user,omitempty" protobuf:"bytes,2,opt,name=user"`
@@ -214,7 +214,7 @@ const (
 type UserSubject struct {
 	// `name` is the username that matches, or "*" to match all usernames.
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 }
 
 // GroupSubject holds detailed information for group-kind subject.
@@ -223,17 +223,17 @@ type GroupSubject struct {
 	// See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some
 	// well-known group names.
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 }
 
 // ServiceAccountSubject holds detailed information for service-account-kind subject.
 type ServiceAccountSubject struct {
 	// `namespace` is the namespace of matching ServiceAccount objects.
 	// Required.
-	Namespace string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
+	Namespace *string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
 	// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name.
 	// Required.
-	Name string `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,2,opt,name=name"`
 }
 
 // ResourcePolicyRule is a predicate that matches some resource
@@ -272,7 +272,7 @@ type ResourcePolicyRule struct {
 	// If this field is omitted or false then the `namespaces` field
 	// must contain a non-empty list.
 	// +optional
-	ClusterScope bool `json:"clusterScope,omitempty" protobuf:"varint,4,opt,name=clusterScope"`
+	ClusterScope *bool `json:"clusterScope,omitempty" protobuf:"varint,4,opt,name=clusterScope"`
 
 	// `namespaces` is a list of target namespaces that restricts
 	// matches.  A request that specifies a target namespace matches
@@ -322,17 +322,17 @@ type FlowSchemaStatus struct {
 type FlowSchemaCondition struct {
 	// `type` is the type of the condition.
 	// Required.
-	Type FlowSchemaConditionType `json:"type,omitempty" protobuf:"bytes,1,opt,name=type"`
+	Type *FlowSchemaConditionType `json:"type,omitempty" protobuf:"bytes,1,opt,name=type"`
 	// `status` is the status of the condition.
 	// Can be True, False, Unknown.
 	// Required.
-	Status ConditionStatus `json:"status,omitempty" protobuf:"bytes,2,opt,name=status"`
+	Status *ConditionStatus `json:"status,omitempty" protobuf:"bytes,2,opt,name=status"`
 	// `lastTransitionTime` is the last time the condition transitioned from one status to another.
 	LastTransitionTime metav1.Time `json:"lastTransitionTime,omitempty" protobuf:"bytes,3,opt,name=lastTransitionTime"`
 	// `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
-	Reason string `json:"reason,omitempty" protobuf:"bytes,4,opt,name=reason"`
+	Reason *string `json:"reason,omitempty" protobuf:"bytes,4,opt,name=reason"`
 	// `message` is a human-readable message indicating details about last transition.
-	Message string `json:"message,omitempty" protobuf:"bytes,5,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,5,opt,name=message"`
 }
 
 // FlowSchemaConditionType is a valid value for FlowSchemaStatusCondition.Type
@@ -356,11 +356,11 @@ type PriorityLevelConfiguration struct {
 	// `spec` is the specification of the desired behavior of a "request-priority".
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Spec PriorityLevelConfigurationSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec *PriorityLevelConfigurationSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 	// `status` is the current status of a "request-priority".
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 	// +optional
-	Status PriorityLevelConfigurationStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status *PriorityLevelConfigurationStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -393,7 +393,7 @@ type PriorityLevelConfigurationSpec struct {
 	// capacity is made available exclusively to this priority level.
 	// Required.
 	// +unionDiscriminator
-	Type PriorityLevelEnablement `json:"type" protobuf:"bytes,1,opt,name=type"`
+	Type *PriorityLevelEnablement `json:"type" protobuf:"bytes,1,opt,name=type"`
 
 	// `limited` specifies how requests are handled for a Limited priority level.
 	// This field must be non-empty if and only if `type` is `"Limited"`.
@@ -434,10 +434,10 @@ type LimitedPriorityLevelConfiguration struct {
 	// expense of every other PL).
 	// This field has a default value of 30.
 	// +optional
-	AssuredConcurrencyShares int32 `json:"assuredConcurrencyShares" protobuf:"varint,1,opt,name=assuredConcurrencyShares"`
+	AssuredConcurrencyShares *int32 `json:"assuredConcurrencyShares" protobuf:"varint,1,opt,name=assuredConcurrencyShares"`
 
 	// `limitResponse` indicates what to do with requests that can not be executed right now
-	LimitResponse LimitResponse `json:"limitResponse,omitempty" protobuf:"bytes,2,opt,name=limitResponse"`
+	LimitResponse *LimitResponse `json:"limitResponse,omitempty" protobuf:"bytes,2,opt,name=limitResponse"`
 
 	// `lendablePercent` prescribes the fraction of the level's NominalCL that
 	// can be borrowed by other priority levels. The value of this
@@ -480,7 +480,7 @@ type LimitResponse struct {
 	// are rejected.
 	// Required.
 	// +unionDiscriminator
-	Type LimitResponseType `json:"type" protobuf:"bytes,1,opt,name=type"`
+	Type *LimitResponseType `json:"type" protobuf:"bytes,1,opt,name=type"`
 
 	// `queuing` holds the configuration parameters for queuing.
 	// This field may be non-empty only if `type` is `"Queue"`.
@@ -509,7 +509,7 @@ type QueuingConfiguration struct {
 	// associated flow schemas irrelevant.  This field has a default
 	// value of 64.
 	// +optional
-	Queues int32 `json:"queues" protobuf:"varint,1,opt,name=queues"`
+	Queues *int32 `json:"queues" protobuf:"varint,1,opt,name=queues"`
 
 	// `handSize` is a small positive number that configures the
 	// shuffle sharding of requests into queues.  When enqueuing a request
@@ -523,14 +523,14 @@ type QueuingConfiguration struct {
 	// documentation for more extensive guidance on setting this
 	// field.  This field has a default value of 8.
 	// +optional
-	HandSize int32 `json:"handSize" protobuf:"varint,2,opt,name=handSize"`
+	HandSize *int32 `json:"handSize" protobuf:"varint,2,opt,name=handSize"`
 
 	// `queueLengthLimit` is the maximum number of requests allowed to
 	// be waiting in a given queue of this priority level at a time;
 	// excess requests are rejected.  This value must be positive.  If
 	// not specified, it will be defaulted to 50.
 	// +optional
-	QueueLengthLimit int32 `json:"queueLengthLimit" protobuf:"varint,3,opt,name=queueLengthLimit"`
+	QueueLengthLimit *int32 `json:"queueLengthLimit" protobuf:"varint,3,opt,name=queueLengthLimit"`
 }
 
 // PriorityLevelConfigurationConditionType is a valid value for PriorityLevelConfigurationStatusCondition.Type
@@ -549,17 +549,17 @@ type PriorityLevelConfigurationStatus struct {
 type PriorityLevelConfigurationCondition struct {
 	// `type` is the type of the condition.
 	// Required.
-	Type PriorityLevelConfigurationConditionType `json:"type,omitempty" protobuf:"bytes,1,opt,name=type"`
+	Type *PriorityLevelConfigurationConditionType `json:"type,omitempty" protobuf:"bytes,1,opt,name=type"`
 	// `status` is the status of the condition.
 	// Can be True, False, Unknown.
 	// Required.
-	Status ConditionStatus `json:"status,omitempty" protobuf:"bytes,2,opt,name=status"`
+	Status *ConditionStatus `json:"status,omitempty" protobuf:"bytes,2,opt,name=status"`
 	// `lastTransitionTime` is the last time the condition transitioned from one status to another.
 	LastTransitionTime metav1.Time `json:"lastTransitionTime,omitempty" protobuf:"bytes,3,opt,name=lastTransitionTime"`
 	// `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
-	Reason string `json:"reason,omitempty" protobuf:"bytes,4,opt,name=reason"`
+	Reason *string `json:"reason,omitempty" protobuf:"bytes,4,opt,name=reason"`
 	// `message` is a human-readable message indicating details about last transition.
-	Message string `json:"message,omitempty" protobuf:"bytes,5,opt,name=message"`
+	Message *string `json:"message,omitempty" protobuf:"bytes,5,opt,name=message"`
 }
 
 // ConditionStatus is the status of the condition.

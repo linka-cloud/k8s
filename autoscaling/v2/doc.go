@@ -18,4 +18,4 @@ limitations under the License.
 // +k8s:protobuf-gen=package
 // +k8s:openapi-gen=true
 
-package v2 // import "k8s.io/api/autoscaling/v2"
+package v2 // import "go.linka.cloud/k8s/autoscaling/v2"

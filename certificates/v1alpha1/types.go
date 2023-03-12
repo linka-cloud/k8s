@@ -48,7 +48,7 @@ type ClusterTrustBundle struct {
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// spec contains the signer (if any) and trust anchors.
-	Spec ClusterTrustBundleSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec *ClusterTrustBundleSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
 }
 
 // ClusterTrustBundleSpec contains the signer and trust anchors.
@@ -73,7 +73,7 @@ type ClusterTrustBundleSpec struct {
 	// using a `spec.signerName=NAME` field selector.
 	//
 	// +optional
-	SignerName string `json:"signerName,omitempty" protobuf:"bytes,1,opt,name=signerName"`
+	SignerName *string `json:"signerName,omitempty" protobuf:"bytes,1,opt,name=signerName"`
 
 	// trustBundle contains the individual X.509 trust anchors for this
 	// bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
@@ -86,7 +86,7 @@ type ClusterTrustBundleSpec struct {
 	// Users of ClusterTrustBundles, including Kubelet, are free to reorder and
 	// deduplicate certificate blocks in this file according to their own logic,
 	// as well as to drop PEM block headers and inter-block data.
-	TrustBundle string `json:"trustBundle" protobuf:"bytes,2,opt,name=trustBundle"`
+	TrustBundle *string `json:"trustBundle" protobuf:"bytes,2,opt,name=trustBundle"`
 }
 
 // +k8s:prerelease-lifecycle-gen:introduced=1.26

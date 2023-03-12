@@ -68,7 +68,7 @@ type APIGroupDiscovery struct {
 // APIVersionDiscovery holds a list of APIResourceDiscovery types that are served for a particular version within an API Group.
 type APIVersionDiscovery struct {
 	// version is the name of the version within a group version.
-	Version string `json:"version" protobuf:"bytes,1,opt,name=version"`
+	Version *string `json:"version" protobuf:"bytes,1,opt,name=version"`
 	// resources is a list of APIResourceDiscovery objects for the corresponding group version.
 	// +listType=map
 	// +listMapKey=resource
@@ -80,7 +80,7 @@ type APIVersionDiscovery struct {
 	// significantly out of date. Clients that require the latest
 	// version of the discovery information be retrieved before
 	// performing an operation should not use the aggregated document
-	Freshness DiscoveryFreshness `json:"freshness,omitempty" protobuf:"bytes,3,opt,name=freshness"`
+	Freshness *DiscoveryFreshness `json:"freshness,omitempty" protobuf:"bytes,3,opt,name=freshness"`
 }
 
 // APIResourceDiscovery provides information about an API resource for discovery.
@@ -89,18 +89,18 @@ type APIResourceDiscovery struct {
 	// for this resource across all versions in the API group.
 	// Resources with non-empty groups are located at /apis/<APIGroupDiscovery.objectMeta.name>/<APIVersionDiscovery.version>/<APIResourceDiscovery.Resource>
 	// Resources with empty groups are located at /api/v1/<APIResourceDiscovery.Resource>
-	Resource string `json:"resource" protobuf:"bytes,1,opt,name=resource"`
+	Resource *string `json:"resource" protobuf:"bytes,1,opt,name=resource"`
 	// responseKind describes the group, version, and kind of the serialization schema for the object type this endpoint typically returns.
 	// APIs may return other objects types at their discretion, such as error conditions, requests for alternate representations, or other operation specific behavior.
 	// This value will be null or empty if an APIService reports subresources but supports no operations on the parent resource
 	ResponseKind *v1.GroupVersionKind `json:"responseKind,omitempty" protobuf:"bytes,2,opt,name=responseKind"`
 	// scope indicates the scope of a resource, either Cluster or Namespaced
-	Scope ResourceScope `json:"scope" protobuf:"bytes,3,opt,name=scope"`
+	Scope *ResourceScope `json:"scope" protobuf:"bytes,3,opt,name=scope"`
 	// singularResource is the singular name of the resource.  This allows clients to handle plural and singular opaquely.
 	// For many clients the singular form of the resource will be more understandable to users reading messages and should be used when integrating the name of the resource into a sentence.
 	// The command line tool kubectl, for example, allows use of the singular resource name in place of plurals.
 	// The singular form of a resource should always be an optional element - when in doubt use the canonical resource name.
-	SingularResource string `json:"singularResource" protobuf:"bytes,4,opt,name=singularResource"`
+	SingularResource *string `json:"singularResource" protobuf:"bytes,4,opt,name=singularResource"`
 	// verbs is a list of supported API operation types (this includes
 	// but is not limited to get, list, watch, create, update, patch,
 	// delete, deletecollection, and proxy).
@@ -139,7 +139,7 @@ const (
 type APISubresourceDiscovery struct {
 	// subresource is the name of the subresource.  This is used in the URL path and is the unique identifier
 	// for this resource across all versions.
-	Subresource string `json:"subresource" protobuf:"bytes,1,opt,name=subresource"`
+	Subresource *string `json:"subresource" protobuf:"bytes,1,opt,name=subresource"`
 	// responseKind describes the group, version, and kind of the serialization schema for the object type this endpoint typically returns.
 	// Some subresources do not return normal resources, these will have null or empty return types.
 	ResponseKind *v1.GroupVersionKind `json:"responseKind,omitempty" protobuf:"bytes,2,opt,name=responseKind"`

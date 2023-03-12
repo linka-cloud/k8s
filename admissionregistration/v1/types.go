@@ -187,11 +187,11 @@ type ValidatingWebhook struct {
 	// "imagepolicy" is the name of the webhook, and kubernetes.io is the name
 	// of the organization.
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 
 	// ClientConfig defines how to communicate with the hook.
 	// Required
-	ClientConfig WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
+	ClientConfig *WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
 
 	// Rules describes what operations on what resources/subresources the webhook cares about.
 	// The webhook cares about an operation if it matches _any_ Rule.
@@ -338,11 +338,11 @@ type MutatingWebhook struct {
 	// "imagepolicy" is the name of the webhook, and kubernetes.io is the name
 	// of the organization.
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 
 	// ClientConfig defines how to communicate with the hook.
 	// Required
-	ClientConfig WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
+	ClientConfig *WebhookClientConfig `json:"clientConfig" protobuf:"bytes,2,opt,name=clientConfig"`
 
 	// Rules describes what operations on what resources/subresources the webhook cares about.
 	// The webhook cares about an operation if it matches _any_ Rule.
@@ -591,10 +591,10 @@ type WebhookClientConfig struct {
 type ServiceReference struct {
 	// `namespace` is the namespace of the service.
 	// Required
-	Namespace string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
+	Namespace *string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
 	// `name` is the name of the service.
 	// Required
-	Name string `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,2,opt,name=name"`
 
 	// `path` is an optional URL path which will be sent in any request to
 	// this service.
@@ -619,7 +619,7 @@ type MatchCondition struct {
 	// optional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')
 	//
 	// Required.
-	Name string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,1,opt,name=name"`
 
 	// Expression represents the expression which will be evaluated by CEL. Must evaluate to bool.
 	// CEL expressions have access to the contents of the AdmissionRequest and Authorizer, organized into CEL variables:
@@ -634,5 +634,5 @@ type MatchCondition struct {
 	// Documentation on CEL: https://kubernetes.io/docs/reference/using-api/cel/
 	//
 	// Required.
-	Expression string `json:"expression" protobuf:"bytes,2,opt,name=expression"`
+	Expression *string `json:"expression" protobuf:"bytes,2,opt,name=expression"`
 }

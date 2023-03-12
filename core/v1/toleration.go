@@ -20,10 +20,10 @@ package v1
 // if the two tolerations have same <key,effect,operator,value> combination, regard as they match.
 // TODO: uniqueness check for tolerations in api validations.
 func (t *Toleration) MatchToleration(tolerationToMatch *Toleration) bool {
-	return t.Key == tolerationToMatch.Key &&
-		t.Effect == tolerationToMatch.Effect &&
-		t.Operator == tolerationToMatch.Operator &&
-		t.Value == tolerationToMatch.Value
+	return value(t.Key) == value(tolerationToMatch.Key) &&
+		value(t.Effect) == value(tolerationToMatch.Effect) &&
+		value(t.Operator) == value(tolerationToMatch.Operator) &&
+		value(t.Value) == value(tolerationToMatch.Value)
 }
 
 // ToleratesTaint checks if the toleration tolerates the taint.
@@ -36,19 +36,19 @@ func (t *Toleration) MatchToleration(tolerationToMatch *Toleration) bool {
 //     If toleration.key is empty, toleration.operator must be 'Exists';
 //     this combination means to match all taint values and all taint keys.
 func (t *Toleration) ToleratesTaint(taint *Taint) bool {
-	if len(t.Effect) > 0 && t.Effect != taint.Effect {
+	if len(value(t.Effect)) > 0 && value(t.Effect) != value(taint.Effect) {
 		return false
 	}
 
-	if len(t.Key) > 0 && t.Key != taint.Key {
+	if len(value(t.Key)) > 0 && value(t.Key) != value(taint.Key) {
 		return false
 	}
 
 	// TODO: Use proper defaulting when Toleration becomes a field of PodSpec
-	switch t.Operator {
+	switch value(t.Operator) {
 	// empty operator means Equal
 	case "", TolerationOpEqual:
-		return t.Value == taint.Value
+		return value(t.Value) == value(taint.Value)
 	case TolerationOpExists:
 		return true
 	default:
